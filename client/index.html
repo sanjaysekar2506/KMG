@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Foody - Organic Food Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Lora:wght@600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- fontawsom -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+
+</head>
+
+<body>
+
+
+
+
+    <!-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" role="status"></div>
+    </div> -->
+    <!-- <script src="path/to/cart.js"></script> -->
+
+
+
+    <!-- Navbar Start sbt -->
+    <div class="container-fluid fixed-top px-0 wow fadeIn" data-wow-delay="0.1s" style="background-color: #b17528;">
+        <div class="top-bar row gx-0 align-items-center d-none d-lg-flex">
+            <div class="col-lg-6 px-5 text-light">
+                <small><i class="fa fa-map-marker-alt me-2"></i>54, Gandhi Road, West Tambaram, Chennai - 600045</small>
+                <small class="ms-4"><i class="fa fa-envelope me-2 text-light"></i> sbmt15424@gmail.com</small>
+            </div>
+            <div class="col-lg-6 px-5 text-end">
+                <a class="text-light ms-3" href=""><i class="fab fa-facebook-f"></i></a>
+                <a class="text-light ms-3" href=""><i class="fab fa-twitter"></i></a>
+                <a class="text-light ms-3" href=""><i class="fa-brands fa-whatsapp"></i></a>
+                <a class="text-light ms-3" href=""><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+
+        <!-- Updated Navbar for Full Mobile View -->
+        <nav class="navbar navbar-expand-lg navbar-dark py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s"
+            style="background-color: #faedd6; height: 95px;">
+            <div class="container-fluid">
+                <!-- Logo on the left -->
+                <a href="index.html" class="navbar-brand">
+                    <div class="logo">
+                        <img src="img/logo/Capture_2-removebg-preview.png" alt=""
+                            style="height: 72px; filter: drop-shadow(0 0.5px 0.5px black); position: fixed; margin-bottom: 15px;">
+                        <p
+                            style="margin-left: 400px; background: linear-gradient(90deg, #bb7307, #e6a84b, #8b4f02); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-top: 13px; font-size: 39px; font-family: 'Lucida Console', Monaco, monospace; font-weight: bold; letter-spacing: 3px; text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); ">
+                            SRI BALAMURUGAN TRADERS
+                        </p>
+
+                        <style>
+                            @keyframes fadeIn {
+                                0% {
+                                    opacity: 0;
+                                    transform: translateY(-20px);
+                                }
+
+                                100% {
+                                    opacity: 1;
+                                    transform: translateY(0);
+                                }
+                            }
+
+                            @keyframes pulse {
+                                0% {
+                                    transform: scale(1);
+                                }
+
+                                50% {
+                                    transform: scale(1.1);
+                                }
+
+                                100% {
+                                    transform: scale(1);
+                                }
+                            }
+                        </style>
+                    </div>
+                </a>
+
+                <!-- Fixed icons on the right -->
+                <div class="d-flex position-fixed end-0 me-4">
+                    <a class="btn-sm-square bg-white rounded-circle ms-3 admin-icon" href="javascript:void(0)"
+                        style="z-index: 1000;">
+                        <small class="fa fa-user text-body fs-4"></small>
+                    </a>
+                    <a class="btn-sm-square bg-white rounded-circle ms-3 position-relative" style="z-index: 1000;">
+                        <small class="fa fa-shopping-bag text-body fs-4"></small>
+                        <span id="cartCount"
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            0
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- for mobile view -->
+
+    </div>
+    <style>
+
+
+
+    </style>
+    <div class="d-none d-lg-flex ms-2 icon-bar" id="navbarCollapse">
+    </div>
+
+
+
+
+    <!-- Cart Sidebar -->
+    <div id="cartSidebar" class="cart-sidebar d-flex flex-column">
+        <button id="closeCart" class="close-cart">&times;</button>
+        <h3>Your Cart</h3>
+        <div class="cart-items flex-grow-1">
+            <!-- Cart items will dynamically populate here -->
+        </div>
+        <div class="cart-footer bg-white p-3 position-fixed w-100 bottom-0">
+            <h4>Total: <span id="cartTotal">0.00</span></h4>
+            <button id="proceedToCheckout" class="btn btn-primary mt-3">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-bar" id="searchBar">
+        <input type="text" placeholder="Search for products..." id="searchInput">
+        <button type="button" id="searchBtn">Search</button>
+    </div>
+
+    <!-- Modal -->
+    <div id="adminModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="adminLoginForm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required><br>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required><br>
+
+                <button type="submit">Login</button>
+            </form>
+            <p id="error-msg" style="color:red; display:none;">Invalid username or password!</p>
+        </div>
+    </div>
+
+
+
+    </div>
+    </nav>
+    </div>
+
+
+    <!-- Navbar End -->
+
+
+    <!-- Navbar End -->
+    <!-- Carousel Start -->
+    <div class="container-fluid p-0 mb-5  fadeIn" data-wow-delay="0.1s">
+        <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="w-100 img-fluid" src="img/hero/DeWatermark.ai_1735710294054.png" alt="Image">
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row justify-content-center justify-content-lg-start">
+                                <div class="col-12 col-md-10 col-lg-7">
+                                    <h1 class="display-4 mb-3 mt-5 text-white animated slideInDown"
+                                        style="font-family: 'Georgia', serif; letter-spacing: 1px; font-size: 28px;" id="san">
+                                        SRI BALAMURUGAN TRADERS
+                                    </h1>
+                                    <p class="text-white mb-4"
+                                        style="font-size: 16px; font-family: 'Times New Roman', serif;">
+                                        A trusted name in the wholesale trading industry, providing high-quality rice,
+                                        pulses, and grocery products for decades.
+                                    </p>
+                                    <div class="d-grid gap-2 d-sm-inline-block">
+                                        <a href="https://wa.me/+919791636464?text=Hello%20SRI%20BALAMURUGAN%20TRADERS,%20I%20would%20like%20to%20inquire%20about%20your%20products."
+                                            class="btn btn-sm rounded-pill py-2 px-4"
+                                            style="background-color: #8B4513; color: white;" target="_blank">
+                                            CONTACT
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="carousel-item">
+                    <img class="w-100" src="img/hero/WhatsApp Image 2025-01-01 at 10.37.41_52957d04.jpg" alt="Image">
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row justify-content-center justify-content-lg-start">
+                                <div class="col-12 col-md-10 col-lg-7">
+                                    <h1 class="display-4 mb-3 mt-5 text-white animated slideInDown" 
+                                        style="font-family: 'Georgia', serif; letter-spacing: 1px; font-size: 28px;" id="sand">
+                                         RICE AND DHALL WHOLESELLERS
+                                    </h1>
+                                    <p class="text-white mb-4"
+                                        style="font-size: 16px; font-family: 'Times New Roman', serif;">
+                                        Specialists in providing the finest rice and lentils in bulk to businesses and
+                                        households, ensuring premium quality and exceptional value with every purchase.
+                                    </p>
+                                    <div class="d-grid gap-2 d-sm-inline-block">
+                                        <a href="https://wa.me/+919791636464?text=Hello%20SRI%20BALAMURUGAN%20TRADERS,%20I%20would%20like%20to%20inquire%20about%20your%20products."
+                                            class="btn btn-sm rounded-pill py-2 px-4"
+                                            style="background-color: #8B4513; color: white;" target="_blank">
+                                            CONTACT
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!-- 
+        <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button> 
+         <button class="carousel-control-next" type="button" data-bs-target="#header-carousel"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button> -->
+    </div>
+    </div>
+    <style>
+       /* Mobile First: Default for small screens */
+       .container {
+    padding: 15px;
+}
+
+.carousel-item img {
+    width: 100%;
+}
+
+/* Tablets and above (screen width ≥ 576px) */
+@media (min-width: 576px) {
+    .container {
+        padding: 20px;
+    }
+    
+    .carousel-caption {
+        padding: 15px;
+    }
+
+    #san {
+        font-size: 12px; /* Adjusting font size */
+        margin-top: 10px; /* Adding margin top */
+    }
+
+    .text-white {
+        font-size: 14px; /* Adjusting text size */
+    }
+
+    .btn {
+        font-size: 14px;
+    }
+}
+
+/* Medium screens and above (screen width ≥ 768px) */
+@media (min-width: 768px) {
+    .col-md-10 {
+        max-width: 80%;
+    }
+    
+    #san {
+        font-size: 16px; /* Adjusting font size */
+        margin-top: 15px; /* Adding margin top */
+    }
+
+    .text-white {
+        font-size: 16px; /* Adjusting text size */
+    }
+
+    .btn {
+        font-size: 16px;
+    }
+}
+
+/* Large screens and above (screen width ≥ 992px) */
+@media (min-width: 992px) {
+    .col-lg-7 {
+        max-width: 70%;
+    }
+
+    #san {
+        font-size: 10px; /* Adjusting font size */
+        margin-top: 20px; /* Adding margin top */
+    }
+
+    .text-white {
+        font-size: 18px; /* Adjusting text size */
+    }
+
+    .btn {
+        font-size: 18px;
+    }
+}
+
+/* Extra Large screens and above (screen width ≥ 1200px) */
+@media (min-width: 1200px) {
+    .col-lg-7 {
+        max-width: 60%;
+    }
+
+    #san {
+        font-size: 18px; /* Adjusting font size */
+        margin-top: 25px; /* Adding margin top */
+    }
+
+    .text-white {
+        font-size: 20px; /* Adjusting text size */
+    }
+
+    .btn {
+        font-size: 20px;
+    }
+}
+
+
+    </style>
+
+    <!-- Carousel End -->
+
+
+
+
+
+
+
+    <!-- About Start -->
+    <div class="container-xxl py-5" style="background-color: #FAF3E0;">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="about-img position-relative overflow-hidden  pe-0">
+                        <img class="img-fluid w-100" src="img/homepage/wmremove-transformed.jpeg"
+                            alt="Premium Quality Rice and Pulses">
+                    </div>
+                </div>
+
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <h1 class="display-5 mb-4" style="color: #8B4513;">Premium Quality Rice and Pulses</h1>
+                    <p class="mb-4" style="color: #6B4E35;">We bring you the finest selection of rice and dhal, sourced
+                        directly from trusted farms. Our products ensure quality, freshness, and unbeatable value for
+                        all your culinary needs.</p>
+                    <p style="color: #6B4E35;"><i class="fa fa-check text-primary me-3"
+                            style="color: #8B4513;"></i>High-quality grains and pulses</p>
+                    <p style="color: #6B4E35;"><i class="fa fa-check text-primary me-3"
+                            style="color: #8B4513;"></i>Sourced directly from farmers</p>
+                    <p style="color: #6B4E35;"><i class="fa fa-check text-primary me-3"
+                            style="color: #8B4513;"></i>Perfect for all your recipes</p>
+                    <!-- <a class="btn rounded-pill py-3 px-5 mt-3" href="" style="background-color: #8B4513; color: #FFFFFF; border: none;">Explore More</a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- About End -->
+
+
+    <!-- Feature Start -->
+    <!-- <div class="container-fluid bg-white my-5 py-6">
+        <div class="container">
+            <div class="section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s"
+                style="max-width: 500px;">
+                <h1 class="display-5 mb-3" style="color: #8B4513;">Our Features</h1>
+                <p style="color: #6B4E35;">Discover the exceptional quality and care that define our products.
+                    Experience the best of rice and pulses with our dedicated services.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="bg-light text-center h-100 p-4 p-xl-5 border"
+                        style="border-color: #8B4513; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                        <img class="img-fluid mb-4" src="img/icon-1.png" alt="">
+                        <h4 class="mb-3" style="color: #8B4513;">Natural Process</h4>
+                        <p class="mb-4" style="color: #6B4E35;">Our rice and dhal are processed naturally, ensuring
+                            their purity and flavor remain intact.</p>
+                    
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="bg-light text-center h-100 p-4 p-xl-5 border"
+                        style="border-color: #8B4513; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                        <img class="img-fluid mb-4" src="img/icon-2.png" alt="">
+                        <h4 class="mb-3" style="color: #8B4513;">Premium Quality</h4>
+                        <p class="mb-4" style="color: #6B4E35;">We provide premium-grade rice and dhal, perfect for
+                            every kitchen and recipe.</p>
+                    
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="bg-light text-center h-100 p-4 p-xl-5 border"
+                        style="border-color: #8B4513; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                        <img class="img-fluid mb-4" src="img/icon-3.png" alt="">
+                        <h4 class="mb-3" style="color: #8B4513;">Safe and Nutritious</h4>
+                        <p class="mb-4" style="color: #6B4E35;">Our products are not only safe but also retain their
+                            nutritional integrity.</p>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <section class="features-section">
+        <div class="features-container">
+            <div class="feature-box" style="background-color:#dcc9b4;">
+                <div class="feature-icon">
+                    <img src="https://www.mahavirricemill.com/uploads/img/years.png" alt="38+ Years Experience">
+                </div>
+                <div class="feature-title">38+ Years<br>Experience</div>
+            </div>
+
+            <div class="feature-box" style="background-color:#d2b48c;">
+                <div class="feature-icon">
+                    <img src="https://www.mahavirricemill.com/uploads/img/productioon.png" alt="240 Metric Ton Per Day">
+                </div>
+                <div class="feature-title">240 Metric Ton Per Day<br>Production Capacity</div>
+            </div>
+
+            <div class="feature-box" style="background-color:#e5d3b3;">
+                <div class="feature-icon">
+                    <img src="https://www.mahavirricemill.com/uploads/img/exports.png" alt="30K Metric Tons Exported">
+                </div>
+                <div class="feature-title">30K Metric Tons<br>Exported</div>
+            </div>
+
+            <div class="feature-box" style="background-color:#f0dfcf;">
+                <div class="feature-icon">
+                    <img src="https://www.mahavirricemill.com/uploads/img/countries.png" alt="50+ Export Countries">
+                </div>
+                <div class="feature-title">50+ Export<br>Countries</div>
+            </div>
+        </div>
+
+        <div class="call-to-action"
+            style="text-align: center; margin-top: -20px; font-family: var(--agriox-font-3, 'Shadows Into Light', cursive);">
+            Quality Begins in Our Mill, Ends on Your Plate
+        </div>
+
+    </section>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fdf5eb;
+        }
+
+        .features-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .feature-box {
+            background-color: #f7e7d3;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-icon img {
+            width: 80px;
+            height: 80px;
+        }
+
+        .feature-title {
+            font-size: 18px;
+            color: #7a5230;
+            margin-top: 15px;
+            font-weight: bold;
+            line-height: 1.5;
+        }
+
+        .call-to-action {
+            margin-top: 40px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #7a5230;
+        }
+
+        @media (max-width: 768px) {
+            .feature-box {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .call-to-action {
+                font-size: 18px;
+                padding: 0 10px;
+            }
+        }
+    </style>
+
+    <!-- Feature End -->
+
+    <!-- Product Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-0 gx-5 align-items-end">
+                <div class="col-lg-6">
+                    <div class="section-header text-start mb-5 wow fadeInUp" data-wow-delay="0.1s"
+                        style="max-width: 500px;">
+                        <h1 class="display-5 mb-3">Our Products</h1>
+                        <!-- <p>Explore our range of products tailored to meet your needs.</p> -->
+                    </div>
+                </div>
+                <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
+                    <!-- Dynamic category buttons will be inserted here -->
+                    <ul class="nav nav-pills d-inline-flex justify-content-end mb-5" id="categoryButtonsContainer">
+                        <!-- Category buttons will be populated dynamically by JavaScript -->
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Cart Section -->
+            <div class="container-xxl py-5">
+                <div class="container">
+                    <h2 class="display-5 mb-3">Cart</h2>
+                    <div class="row g-4" id="cartContainer">
+                        <!-- Cart items will be inserted here dynamically -->
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Product container where the products will be displayed -->
+            <div class="row row-cols-2 g-4" id="productsContainer">
+                <!-- Products will be inserted here via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Product End -->
+
+    <!-- Firm Visit Start -->
+    <!-- <div class="container-fluid bg-primary bg-icon mt-5 py-6">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-md-7 wow fadeIn" data-wow-delay="0.1s">
+                    <h1 class="display-5 text-white mb-3">Visit Our Firm</h1>
+                    <p class="text-white mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos.</p>
+                </div>
+                <div class="col-md-5 text-md-end wow fadeIn" data-wow-delay="0.5s">
+                    <a class="btn btn-lg btn-secondary rounded-pill py-3 px-5" href="">Visit Now</a>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- Firm Visit End -->
+
+
+    <!-- Testimonial Start -->
+    <!-- <div class="logoscroller">
+        <div class="logoscroller-track">
+          <div class="logoscroller-item">
+            <img src="/client/brand logo/india gate.jpg" height="100" width="250" alt="" />
+          </div>
+          <div class="logoscroller-item">
+            <img src="/client/brand logo/images.jpeg" height="100" width="250" alt="" />
+          </div>
+          <div class="logoscroller-item">
+            <img src="/client/brand logo/images.png" height="100" width="250" alt="" />
+          </div>
+          <div class="logoscroller-item">
+            <img src="/client/brand logo/RAMAJEYAM_-LOGO_PNG-01.png" height="100" width="250" alt="" />
+          </div>
+           <div class="logoscroller-item">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250" alt="" />
+          </div>
+          <div class="logoscroller-item">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250" alt="" />
+          </div>
+          <div class="logoscroller-item">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100" width="250" alt="" />
+          </div>
+          <div class="logoscroller-item">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100" width="250" alt="" />
+          </div> -->
+    <!-- <div class="logoscroller-item">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250" alt="" />
+          </div>
+          <div class="logoscroller-item">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100" width="250" alt="" />
+          </div>
+          <div class="logoscroller-item">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100" width="250" alt="" />
+          </div>
+          <div class="logoscroller-item">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250" alt="" />
+          </div>
+          <div class="logoscroller-item">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250" alt="" />
+          </div> -->
+    <!-- </div>
+      </div> -->
+
+
+    <div>
+        <div class="section-header text-start me-4 m-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <h1 class="display-5 m-3">Dealers Ship</h1>
+            <!-- <p>Explore our range of products tailored to meet your needs.</p> -->
+        </div>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                /* background: #f2f2f2; */
+            }
+
+            @keyframes slide {
+                from {
+                    transform: translateX(0);
+                }
+
+                to {
+                    transform: translateX(-100%);
+                }
+            }
+
+            .logos {
+                overflow: hidden;
+                padding: 50px 0;
+                background: #fdf5eb;
+                white-space: nowrap;
+                position: relative;
+            }
+
+            .logos:before,
+            .logos:after {
+                position: absolute;
+                top: 0;
+                width: 250px;
+                height: 100%;
+                content: "";
+                z-index: 2;
+            }
+
+            .logos:before {
+                left: 0;
+                /* background: linear-gradient(to left, rgba(255, 255, 255, 0), white); */
+            }
+
+            .logos:after {
+                right: 0;
+                /* background: linear-gradient(to right, rgba(255, 255, 255, 0), white); */
+            }
+
+            .logos:hover .logos-slide {
+                /* animation-play-state: paused; */
+            }
+
+            .logos-slide {
+                display: inline-block;
+                animation: 30s slide infinite linear;
+            }
+
+            .logos-slide img {
+                height: 120px;
+                margin: 0 70px;
+            }
+        </style>
+
+        <body>
+            <div class="logos">
+                <div class="logos-slide">
+                    <img src="./img/scroll-log/about.jpg" />
+                    <img src="./img/scroll-log/WhatsApp Image 2025-01-11 at 11.13.43_2be2f654.jpg" />
+                    <img src="./img/scroll-log/WhatsApp Image 2025-01-11 at 11.13.43_62dc75a9.jpg" />
+                    <img src="./img/scroll-log/WhatsApp Image 2025-01-11 at 11.13.43_6e4c30ce.jpg" />
+                    <img src="./img/scroll-log/WhatsApp Image 2025-01-11 at 11.13.43_80fd8dad.jpg" />
+                    <img src="./img/scroll-log/WhatsApp Image 2025-01-11 at 11.13.43_c21ad949.jpg" />
+                    <img src="./img/scroll-log/WhatsApp Image 2025-01-11 at 11.13.43_d2f42f4f.jpg" />
+                    <img src="./img/scroll-log/WhatsApp Image 2025-01-11 at 11.13.43_d736fa63.jpg" />
+                </div>
+
+                <div class="logos-slide">
+                    <img src="./img/scroll-log/about.jpg" />
+                    <img src="./img/scroll-log/WhatsApp Image 2025-01-11 at 11.13.43_2be2f654.jpg" />
+                    <img src="./img/scroll-log/WhatsApp Image 2025-01-11 at 11.13.43_62dc75a9.jpg" />
+                    <img src="./img/scroll-log/WhatsApp Image 2025-01-11 at 11.13.43_6e4c30ce.jpg" />
+                    <img src="./img/scroll-log/WhatsApp Image 2025-01-11 at 11.13.43_80fd8dad.jpg" />
+                    <img src="./img/scroll-log/WhatsApp Image 2025-01-11 at 11.13.43_c21ad949.jpg" />
+                    <img src="./img/scroll-log/WhatsApp Image 2025-01-11 at 11.13.43_d2f42f4f.jpg" />
+                    <img src="./img/scroll-log/WhatsApp Image 2025-01-11 at 11.13.43_d736fa63.jpg" />
+                </div>
+            </div>
+    </div>
+    </div>
+
+
+    <!-- 
+    <div class="logo-carousel-container">
+        <div class="section-header text-start m-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <h1 class="display-5 mb-3">Memberships</h1>
+            <div class="logo-carousel">
+                <img src="./brand logo/images-removebg-preview.png" alt="Product Logo 1">
+                <img src="./brand logo/images.jpeg" alt="Product Logo 2">
+                <img src="./brand logo/images.png" alt="Product Logo 3">
+                <img src="./brand logo/india gate.jpg" alt="Product Logo 4">
+                <img src="./brand logo/RAMAJEYAM_-LOGO_PNG-01.png" alt="Product Logo 5">
+                <img src="./brand logo/images-removebg-preview.png" alt="Product Logo 1">
+                <img src="./brand logo/images.jpeg" alt="Product Logo 2">
+                <img src="./brand logo/images.png" alt="Product Logo 3">
+                <img src="./brand logo/india gate.jpg" alt="Product Logo 4">
+                <img src="./brand logo/RAMAJEYAM_-LOGO_PNG-01.png" alt="Product Logo 5">
+                <img src="./brand logo/RAMAJEYAM_-LOGO_PNG-01.png" alt="Product Logo 5">
+                <img src="./brand logo/images-removebg-preview.png" alt="Product Logo 1">
+                <img src="./brand logo/images.jpeg" alt="Product Logo 2">
+                <img src="./brand logo/images.png" alt="Product Logo 3">
+                <img src="./brand logo/india gate.jpg" alt="Product Logo 4">
+                <img src="./brand logo/RAMAJEYAM_-LOGO_PNG-01.png" alt="Product Logo 5">
+
+            </div> -->
+    <!-- scroll logo -->
+
+    <!-- Testimonial End -->
+
+
+    <!-- Blog Start -->
+    <!-- <div class="container-xxl py-5 m-5">
+            <div class="container">
+                <div class="section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s"
+                    style="max-width: 500px;">
+                    <h1 class="display-5 mb-3" style="color: #8B4513;">Latest Blog</h1>
+                    <p style="color: #6B4E35;">Stay updated with the latest insights and tips on rice and dhal farming,
+                        storage, and culinary excellence.</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <img class="img-fluid" src="img/homepage/blog 1.jpg" alt="Rice Farming">
+                        <div class="bg-light p-4" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                            <a class="d-block h5 lh-base mb-4" href="" style="color: #8B4513;">Top 5 Tips for Growing
+                                High-Quality Rice</a>
+                           
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <img class="img-fluid" src="img/homepage/blog 2.jpg" alt="Dhal Storage">
+                        <div class="bg-light p-4" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                            <a class="d-block h5 lh-base mb-4" href="" style="color: #8B4513;">How to Store Dhal to
+                                Retain Freshness</a>
+                           
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <img class="img-fluid" src="img/homepage/blog 3.jpg" alt="Culinary Tips">
+                        <div class="bg-light p-4" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                            <a class="d-block h5 lh-base mb-4" href="" style="color: #8B4513;">Delicious Recipes with
+                                Rice and Dhal</a>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+ -->
+    <div id="hovercard">
+        <div class="container">
+            <div class="section-header text-start m-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <h1 class="display-5 mb-3">Blogs</h1>
+                <!-- <p>Explore our range of products tailored to meet your needs.</p> -->
+            </div>
+            <div class="work-list">
+                <div class="work">
+                    <img src="./img/homepage/blog 1.jpg" alt="">
+                    <div class="layer">
+                        <h3>Rice – A way of living</h3>
+
+                        <p>“If you give me rice, I’ll eat it today;
+
+                            If you teach me how to grow rice,
+
+                            I’ll eat every day”
+
+                            -Mahatma Gandhi
+                        </p>
+                        <!-- <a href=""><i
+                            class="fa-solid fa-arrow-up-right-from-square"></i></a> -->
+
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="./img/homepage/blog 2.jpg" alt="">
+                    <div class="layer">
+                        <h3>History of Rice</h3>
+
+                        <p>Rice, one of the most important staple foods in the world, has a history that spans thousands
+                            of years. Archaeological evidence suggests that rice cultivation began around 8,000–10,000
+                            years ago in the Yangtze River valley in China.
+                        </p>
+
+
+                    </div>
+                </div>
+                <!-- <div class="work">
+                <img src="/SBT updated/client/img/rice3.jpg" alt="">
+                <div class="layer">
+                    <h3>Snacks shop</h3>
+
+                    <p>By using HTML and CSS make a snacks shop with the mobile responsive..
+                    </p>
+
+
+                </div>
+            </div>
+            <div class="work">
+                <img src="/SBT updated/client/img/rice3.jpg" alt="">
+                <div class="layer">
+                    <h3>Gride Gallery </h3>
+
+                    <p>A grid gallery using HTML and CSS and with the mobile responsive.
+                    </p>
+
+
+                </div>
+            </div>
+            <div class="work">
+                <img src="/SBT updated/client/img/rice3.jpg" alt="">
+                <div class="layer">
+                    <h3>Car showroom </h3>
+
+                    <p>car showroom by using HTML ,CSS ,JavaScript ,bootstrap and with the mobile responsive.
+                    </p>
+
+                </div>
+            </div> -->
+                <div class="work">
+                    <img src="./img/homepage/blog 3.jpg" alt="">
+                    <div class="layer">
+                        <h3>Dal and Its Role in Sustainable Eating </h3>
+
+                        <p>Dal, the collective term for lentils and legumes, plays a crucial role in sustainable eating
+                            practices due to its many environmental and health benefits
+                        </p>
+
+
+                    </div>
+                </div>
+            </div>
+            <!-- <a href="#" class="btn">See more</a> -->
+        </div>
+    </div>
+    <style>
+        #hovercard {
+            padding: 50px 0;
+        }
+
+        .work-list {
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 40px;
+            margin-top: 50px;
+        }
+
+        .work {
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .work img {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .layer {
+            width: 100%;
+            height: 0;
+            background: rgba(224, 180, 122, 0.788);
+            border-radius: 10px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0 40px;
+            text-align: center;
+            font-size: 14px;
+            transition: height 0.5s;
+        }
+
+        .layer h3 {
+            font-weight: 500;
+            margin-bottom: 20px;
+
+        }
+
+        .layer p {
+            color: black;
+        }
+
+        .layer a {
+            margin-top: 20px;
+            color: rgba(224, 180, 122, 0.897) #FFD700;
+            text-decoration: none;
+            font-size: 18px;
+            line-height: 60px;
+            background: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+
+
+        }
+
+        .work:hover img {
+            transform: scale(1.1);
+
+        }
+
+        .work:hover .layer {
+            height: 100%;
+        }
+
+        .btns {
+            display: block;
+            margin: 50px auto;
+            width: fit-content;
+            border: 1px solid #1f1c1d;
+            padding: 14px 50px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #9a5151;
+
+        }
+
+        .btn:hover {
+            /* background: #ff004f; */
+        }
+    </style>
+
+    <!-- Blog End -->
+    <section class="assurance_sec">
+        <div class="container">
+            <div class="row">
+                <center>
+                    <h5><span>OUR</span> ASSURANCE</h5>
+                    <p>What we stand by then, now, forever</p>
+                </center>
+                <div class="col-md-6 col-xs-12">
+                    <div class="assurance_box">
+                        <img src="https://www.parliamentrice.com/assets/front/images/thumb-icon.png">
+                        <strong>Superior quality and efficiency</strong>
+                        <div class="bdr_btm"></div>
+                        <p>Our rice and dal offerings are carefully sourced from the fertile lands of Punjab and
+                            Uttarakhand, known for their rich soil and ideal climate for growing high-quality
+                            grains. With a capacity to process over 200,000 metric tonnes annually, we ensure that
+                            every grain is meticulously polished in-house. This results in a product with
+                            exceptional aroma, taste, and texture, setting it apart in the market.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <div class="assurance_box">
+                        <img src="https://www.parliamentrice.com/assets/front/images/safety-icon.png">
+                        <strong>Safety &amp; Hygiene</strong>
+                        <div class="bdr_btm"></div>
+                        <p>We take pride in our sustainable farming practices and eco-friendly measures, which are
+                            maintained throughout the entire process. From cultivation to packaging, every step is
+                            handled with care, ensuring the finest quality rice and dal for your table.
+                            rom cultivation to packaging, every step is handled with care, ensuring the finest
+                            quality rice and dal for your table
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <style>
+        /* Background image and fixed positioning for the section */
+        .assurance_sec {
+            position: relative;
+            background-image: url('your-image-url.jpg');
+            /* Replace with your image URL */
+            background-position: center;
+            background-attachment: fixed;
+            background-size: cover;
+            padding: 50px 0;
+            /* Adjust as necessary */
+        }
+
+        /* Add shadow to the container */
+        .assurance_sec .container {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.8);
+            /* Optional: gives a semi-transparent white background */
+            padding: 30px;
+            /* Adjust padding as needed */
+        }
+
+        /* Optional: Styling for heading */
+        .assurance_sec h5 span {
+            color: #8B4513;
+            /* Custom color for the span text */
+        }
+
+        .assurance_sec p {
+            color: #6B4E35;
+            /* Custom color for paragraph text */
+        }
+
+        /* Styling for assurance box */
+        .assurance_box {
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        /* Styling for the image in assurance box */
+        .assurance_box img {
+            width: 50px;
+            /* Adjust size */
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        /* Styling for the border bottom */
+        .bdr_btm {
+            border-bottom: 2px solid #8B4513;
+            margin-bottom: 10px;
+        }
+    </style>
+
+
+    <footer>
+        <!-- Video Background -->
+        <video autoplay muted loop id="background-video">
+            <source src="video/footer gif.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <!-- Footer Content -->
+        <div class="footer-content">
+            <div class="contact-details">
+                <h3 style="margin-left: -150px;">Contact</h3>
+                <p><strong>Email:</strong> sbmt15424@gmail.com</p>
+                <p> <strong>Phone:</strong> +91 9791636464</p>
+                <p> 54, Gandhi Road, West Tambaram, Chennai - 600045</p>
+                <p> <strong>GSTIN:</strong> 33BEIPG2538C1Z0</p>
+            </div>
+
+            <div class="memberships">
+                <h3>Dealers Ship</h3>
+                <div class="logo-container" style="margin-top: 30px;">
+                    <img src="./brand logo/images.jpeg" alt="APEDA">
+                    <img src="./brand logo/images.png" alt="FSSAI">
+                    <img src="./brand logo/india gate.jpg" alt="One Star Export">
+                    <img src="./brand logo/logo-new-design-1.png" alt="ISO 22000:2018">
+                    <img src="./brand logo/RAMAJEYAM_-LOGO_PNG-01.png" alt="HACCP">
+                    <!-- <img src="/brand logo/images.jpeg" alt="ISO 9001"> -->
+                </div>
+            </div>
+
+            <div class="location">
+                <h3>Location</h3>
+                <!-- <iframe 
+                src="https://maps.app.goo.gl/GMiU3MYs2CFSA1Gb6"
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe> -->
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.692002873472!2d80.109117!3d12.9275065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525f65571dc445%3A0xdca59749b0a34c88!2s54%2C%20Gandhi%20Rd%2C%20Chandra%20Puram%2C%20West%20Tambaram%2C%20Tambaram%2C%20Chennai%2C%20Tamil%20Nadu%20600045!5e0!3m2!1sen!2sin!4v1734334461606!5m2!1sen!2sin"
+                    style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+
+        <div class="footer" style="color: #fff; text-align: center; font-size: 15px;">
+            <p style="color: #f7f5f5; display: inline-block; border-top: 2px solid #fff; padding-top: 10px;">
+                &copy; 2025 SRI BALAMURUGAN TREADERS. All Rights Reserved |
+                <a href="https://www.corpwings.in" style="color: #ffffff; font-weight: bold;">Developed, Marketed, and
+                    Designed by Corp Wings</a>
+            </p>
+        </div>
+    </footer>
+
+
+
+
+
+</body>
+
+</html>
+
+<style>
+    /* Reset Defaults */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* Footer Styles */
+    footer {
+        position: relative;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        text-align: start;
+        padding: 20px;
+        overflow: hidden;
+        background: linear-gradient(rgb(6 6 6 / 67%), rgba(152, 72, 15, 0.48));
+    }
+
+    /* Video Background */
+    #background-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+    }
+
+    /* Footer Content */
+    .footer-content {
+        display: flex;
+        justify-content: end;
+        align-items: start;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 2;
+        padding: 20px;
+    }
+
+    .footer-content h3 {
+        margin-bottom: 10px;
+        font-size: 1.2em;
+        color: #f2f2f2;
+        text-align: center;
+    }
+
+    .contact-details,
+    .memberships,
+    .location {
+        margin: 10px;
+        flex: 1;
+        min-width: 250px;
+    }
+
+    /* Membership Logos */
+    .logo-container {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .logo-container img {
+        width: 60px;
+        height: auto;
+        object-fit: contain;
+        margin: 5px;
+    }
+
+    /* Map */
+    .location iframe {
+        border: none;
+        border-radius: 5px;
+        margin-left: 5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .footer-content {
+            flex-direction: column;
+        }
+    }
+</style>
+
+
+
+<!-- Back to Top -->
+<a href="https://wa.me/6379063282?text=Hi i would like to order"
+    class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top" target="_blank"
+    style="background-color: #25D366; border: none;">
+    <i class="bi bi-whatsapp" style="font-size: 1.5em; color: #fff;"></i>
+</a>
+
+
+
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="lib/wow/wow.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/waypoints/waypoints.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+
+<!-- Template Javascript -->
+<script src="js/main.js"></script>
+<script src="js/app.js"></script>
+
+<!-- Place this just before the closing </body> tag -->
+
+<!-- Modal -->
+<div class="modal fade" id="productAddedModal" tabindex="-1" aria-labelledby="productAddedModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="productAddedModalLabel">Product Already in Cart</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                This product is already in your cart!
+            </div>
+            <div class="modal-footer" style="color:#bc7348;">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- popup -->
+
+
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+
+//for count
+// Variable to track the cart count
+let cartCount = localStorage.getItem('cartCount') ? parseInt(localStorage.getItem('cartCount')) : 0;
+
+// Function to update the cart count on the icon
+function updateCartCount() {
+    const cartIcon = document.querySelector('.btn-sm-square');
+    cartIcon.innerHTML = `
+        <small class="fa fa-shopping-bag text-body"></small>
+        <span class="cart-count badge bg-primary text-white rounded-circle position-absolute top-10 start- translate-middle">${cartCount}</span>
+    `;
+    localStorage.setItem('cartCount', cartCount);
+
+    // Trigger the cart slide to update or open
+    updateCartSlide(); // Ensure the cart slide is refreshed or opened
+}
+
+// Function to show a popup message
+function showPopupMessage(message) {
+    const popup = document.createElement('div');
+    popup.classList.add('popup-message');
+    popup.textContent = message;
+    document.body.appendChild(popup);
+    
+    setTimeout(() => {
+        popup.remove();
+    }, 3000); // Remove popup after 3 seconds
+}
+
+// Function to update or show the cart slide (this is where the fix happens)
+function updateCartSlide() {
+    const cartSlide = document.querySelector('.cart-slide'); // Ensure this is the correct selector for your cart slide
+    if (cartSlide) {
+        // Add class to show or update the cart slide, this can be a slide animation or visibility toggle
+        cartSlide.classList.add('open'); // Assuming 'open' class is used to display the cart slide
+    }
+}
+
+// Add event listener for "Add to Cart" buttons
+document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('add-to-cart-btn')) {
+        cartCount++;
+        updateCartCount();
+        showPopupMessage("Item added to cart!");
+    }
+});
+
+// Initial setup for the cart icon
+updateCartCount();
+

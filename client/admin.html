@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Category</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+
+<!-- Logout Button -->
+<button id="logoutButton" class="btn btn-danger text-white" style="position: absolute; top: 10px; right: 10px;">Logout</button>
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-6 mt-4 mx-auto">
+            <div class="card p-4 shadow-lg" style="background-color: white;">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 id="form-title" class="text-center" style="color: rgb(28, 121, 28);">Add New Category</h2>
+                    <button class="btn w-50" id="addProductButton" style="background-color: #9a0806; color: rgb(255, 255, 255);">Add Product</button>
+                </div>
+                <div id="alertMessage" class="alert" style="display: none; text-align:center; font-weight:bold;"></div>
+    
+                <form id="categoryForm">
+                    <div class="mb-3">
+                        <label for="categoryName" style="color: rgb(28, 121, 28);" class="form-label">Category Name</label>
+                        <input type="text" class="form-control" id="categoryName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="categoryImage" style="color: rgb(28, 121, 28)" class="form-label">Category Image</label>
+                        <img id="imagePreview" src="" alt="" class="img-thumbnail mb-3" style="max-height: 150px; display: none;">
+                        <input type="file" class="form-control" id="categoryImage" accept="image/jpeg, image/png" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100" id="submitButton" style="background-color: rgb(4, 70, 4);">Add Category</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="row mt-5">
+        <h3 class="text-center m-4">Existing Categories</h3>
+        <div class="col-lg-12">
+            <div class="row" id="categoriesList">
+                <!-- Categories will be displayed here dynamically -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const apiUrl = 'http://localhost:5000'; // Adjust the API URL as necessary
+    let editMode = false;
+    let editCategoryId = null;
+
+    // Redirect to addproduct.html
+    $('#addProductButton').on('click', () => {
+        window.location.href = 'addproduct.html'; // Adjust the URL if necessary
+    });
+
+    // Logout functionality
+    $('#logoutButton').on('click', () => {
+        if (confirm('Are you sure you want to logout?')) {
+            window.location.href = 'index.html'; // Redirect to index.html on logout
+        }
+    });
+
+    // Fetch categories from the server
+    function fetchCategories() {
+        $.ajax({
+            url: `${apiUrl}/addcategories`,
+            method: 'GET',
+            success: function (categories) {
+                renderCategories(categories);
+            },
+            error: function () {
+                showAlert('Failed to fetch categories', 'error');
+            }
+        });
+    }
+
+    // Render categories into the HTML
+    function renderCategories(categories) {
+        let categoryHTML = '';
+        categories.forEach(category => {
+            categoryHTML += `
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="${category.imageUrl}" class="card-img-top" alt="${category.name}" style="height: 300px; object-fit: cover;">
+                        <div class="card-body text-center">
+                            <h5 class="card-title" style="color: black;">${category.name}</h5>
+                            <button class="btn btn-warning me-2" onclick="handleEdit('${category._id}')">Edit</button>
+                            <button class="btn btn-danger" onclick="handleRemove('${category._id}')">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        $('#categoriesList').html(categoryHTML);
+    }
+
+    // Show alert messages
+    function showAlert(message, type) {
+        $('#alertMessage').text(message)
+            .removeClass('alert-success alert-danger')
+            .addClass(type === 'success' ? 'alert-success' : 'alert-danger')
+            .fadeIn();
+
+        setTimeout(() => {
+            $('#alertMessage').fadeOut();
+        }, 3000);
+    }
+
+    // Handle form submit (Add or Edit Category)
+    $('#categoryForm').on('submit', function (e) {
+        e.preventDefault();
+
+        const categoryName = $('#categoryName').val();
+        const categoryImage = $('#categoryImage')[0].files[0];
+
+        if (!categoryName) {
+            showAlert('Category name is required.', 'error');
+            return;
+        }
+
+        if (!categoryImage && !editMode) {
+            showAlert('Please upload an image.', 'error');
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('name', categoryName);
+        if (categoryImage) {
+            formData.append('image', categoryImage);
+        }
+
+        const url = editMode ? `${apiUrl}/updateCategory/${editCategoryId}` : `${apiUrl}/addCategories`;
+        const method = editMode ? 'PUT' : 'POST';
+
+        $.ajax({
+            url: url,
+            method: method,
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function () {
+                showAlert(editMode ? 'Category updated successfully' : 'Category added successfully', 'success');
+                resetForm();
+                fetchCategories();
+            },
+            error: function () {
+                showAlert('Failed to add/update category', 'error');
+            }
+        });
+    });
+
+    // Handle category edit
+    function handleEdit(categoryId) {
+        $.ajax({
+            url: `${apiUrl}/addcategories/${categoryId}`,
+            method: 'GET',
+            success: function (category) {
+                populateForm(category);
+            },
+            error: function () {
+                showAlert('Failed to fetch category details for editing', 'error');
+            }
+        });
+    }
+
+    // Populate form for editing
+    function populateForm(category) {
+        $('#categoryName').val(category.name);
+        $('#imagePreview').attr('src', category.imageUrl).show();
+        $('#form-title').text('Update Category');
+        $('#submitButton').text('Update Category');
+        $('#categoryImage').prop('required', false);
+        editMode = true;
+        editCategoryId = category._id;
+        window.scrollTo(0, 0);
+    }
+
+    // Handle category removal
+    function handleRemove(categoryId) {
+        if (!confirm('Are you sure you want to delete this category?')) return;
+
+        $.ajax({
+            url: `${apiUrl}/deleteCategory/${categoryId}`,
+            method: 'DELETE',
+            success: function () {
+                showAlert('Category removed successfully', 'success');
+                fetchCategories();
+            },
+            error: function () {
+                showAlert('Failed to remove category', 'error');
+            }
+        });
+    }
+
+    // Reset the form after submit or cancel
+    function resetForm() {
+        $('#categoryName').val('');
+        $('#categoryImage').val('');
+        $('#imagePreview').hide();
+        $('#form-title').text('Add New Category');
+        $('#submitButton').text('Add Category');
+        $('#categoryImage').prop('required', true);
+        editMode = false;
+        editCategoryId = null;
+    }
+
+    // Preview image on file change
+    $('#categoryImage').on('change', function () {
+        const file = this.files[0];
+        if (file) {
+            const fileReader = new FileReader();
+            fileReader.onload = function (e) {
+                $('#imagePreview').attr('src', e.target.result).show();
+            };
+            fileReader.readAsDataURL(file);
+        } else {
+            $('#imagePreview').hide();
+        }
+    });
+
+    // Initial fetch of categories
+    fetchCategories();
+</script>
+
+
+</body>
+</html>
