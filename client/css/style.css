@@ -456,7 +456,7 @@
 #adminModal {
     display: none; /* Hidden by default */
     position: fixed;
-    z-index: 100000; /* Sit on top */
+    z-index: 10; /* Sit on top */
     left: 0;
     top: 0;
     width: 100%;
