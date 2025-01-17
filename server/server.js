@@ -12,6 +12,10 @@ const app = express();
 app.use(cors()); // Enable CORS
 app.use(express.json());
 
+app.use(cors({
+    origin: 'https://sribalamurugantradersricewholesaler.com', // Allow your frontend domain
+  }));
+
 // Cloudinary configuration
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
