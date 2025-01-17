@@ -13,7 +13,7 @@ app.use(cors()); // Enable CORS
 app.use(express.json());
 
 app.use(cors({
-    origin: 'https://sribalamurugantradersricewholesaler.com', // Allow your frontend domain
+    origin: 'https://api.sribalamurugantradersricewholesaler.com', // Allow your frontend domain
   }));
 
 // Cloudinary configuration
