@@ -10,11 +10,12 @@ dotenv.config();
 
 const app = express();
 app.use(cors()); // Enable CORS
-app.use(express.json());
 
 app.use(cors({
-    origin: 'https://api.sribalamurugantradersricewholesaler.com', // Allow your frontend domain
-  }));
+
+    origin: 'https://api.sribalamurugantradersricewholesaler.com',
+
+}));
 
 // Cloudinary configuration
 cloudinary.config({
