@@ -41,7 +41,7 @@
     opacity: 0;
     visibility: hidden;
     transition: opacity .5s ease-out, visibility 0s linear .5s;
-    z-index: 99999;
+    z-index: 999;
 }
 
 #spinner.show {
@@ -149,7 +149,7 @@
     
     
 }
-
+/* 
 @media (min-width: 992px) {
     .navbar .nav-item .dropdown-menu {
         display: block;
@@ -167,13 +167,14 @@
         transition: .5s;
         opacity: 1;
     }
-}
+} */
 
 /* General styles for the logo container */
 .logo {
     display: flex; /* Ensures proper alignment and flexibility */
     align-items: center; /* Vertically centers the content */
     justify-content: flex-start; /* Aligns the content to the left */
+    margin-left: -14px;
 }
 
 /* Styling the image within the logo */
@@ -209,7 +210,7 @@
     align-items: center;
     justify-content: center;
     text-align: start;
-    z-index: 1;
+    z-index: 1000;
 }
 
 .carousel-control-prev,
@@ -456,7 +457,7 @@
 #adminModal {
     display: none; /* Hidden by default */
     position: fixed;
-    z-index: 1; /* Sit on top */
+    z-index: 10000; /* Sit on top */
     left: 0;
     top: 0;
     width: 100%;
@@ -675,19 +676,19 @@ body.showCart .container{
 .listCart::-webkit-scrollbar{
     width: 0;
 }
-@media only screen and (max-width: 992px) {
+/* @media only screen and (max-width: 992px) {
     .listProduct{
         grid-template-columns: repeat(3, 1fr);
     }
-}
+} */
 
 
 /* mobile */
-@media only screen and (max-width: 768px) {
+/* @media only screen and (max-width: 768px) {
     .listProduct{
         grid-template-columns: repeat(2, 1fr);
     }
-}
+} */
 
 /* Cart Sidebar Styles */
 /* .cart-sidebar {
@@ -823,69 +824,112 @@ body.showCart .container{
 }
 
 /* Styling for the image inside the product card */
+/* Default Styles (Desktop, Large screens) */
 .product-item img {
-    border-top-left-radius: 10px; /* Rounded corners for the top left */
-    border-top-right-radius: 10px; /* Rounded corners for the top right */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     height: 250px;
     object-fit: cover;
 }
-    .add-to-cart-btn {
-        padding: 6px 12px; /* Reduce the button size */
-        font-size: 14px; /* Smaller font */
-        transition: background-color 0.3s ease; /* Add smooth transition for background color */
-        border-radius: 0 0 10px 10px;
-    }
 
-    .add-to-cart-btn:hover {
-        background-color: rgb(211, 30, 30); /* Darken the button on hover */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    }
+.add-to-cart-btn {
+    padding: 6px 12px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    border-radius: 0 0 10px 10px;
+}
 
-    /* Remove extra space */
-    .text-center.p-4 {
-        padding: 15px; /* Adjust padding to suit the content */
-    }
+.add-to-cart-btn:hover {
+    background-color: rgb(211, 30, 30);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
 
-    /* Mobile responsiveness for product cards */
+.text-center.p-4 {
+    padding: 15px;
+}
+
+/* Tablet (Max width: 768px) */
 @media (max-width: 768px) {
     .product-item {
-        height: auto; /* Allow flexible height for smaller screens */
-        margin-bottom: 20px; /* Add space between cards */
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soften shadow for smaller screens */
+        height: auto;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
     .product-item img {
-        height: 200px; /* Adjust image height for better fit */
+        height: 200px;
     }
 
     .add-to-cart-btn {
-        font-size: 12px; /* Smaller button font size */
-        padding: 5px 10px; /* Compact button padding */
+        font-size: 12px;
+        padding: 5px 10px;
     }
 
     .text-center.p-4 {
-        padding: 10px; /* Reduce padding for smaller screens */
+        padding: 10px;
     }
 }
 
+/* Mobile Small (Max width: 576px) */
 @media (max-width: 576px) {
     .product-item {
-        margin-bottom: 15px; /* Tighter spacing between product cards */
+        margin-bottom: 15px;
     }
 
     .product-item img {
-        height: 180px; /* Further reduce image height on very small screens */
+        height: 180px;
     }
 
     .add-to-cart-btn {
-        font-size: 11px; /* Even smaller button font */
-        padding: 4px 8px; /* More compact padding */
+        font-size: 11px;
+        padding: 4px 8px;
     }
 
     .text-center.p-4 {
-        padding: 8px; /* Minimize padding for text */
+        padding: 8px;
     }
 }
+
+/* Extra Small Mobile (Max width: 400px) */
+@media (max-width: 400px) {
+    .product-item {
+        margin-bottom: 10px;
+    }
+
+    .product-item img {
+        height: 160px;
+    }
+
+    .add-to-cart-btn {
+        font-size: 10px;
+        padding: 3px 6px;
+    }
+
+    .text-center.p-4 {
+        padding: 5px;
+    }
+}
+
+/* Ultra Small (Max width: 320px) */
+@media (max-width: 320px) {
+    .product-item {
+        margin-bottom: 8px;
+    }
+
+    .product-item img {
+        height: 140px;
+    }
+
+    .add-to-cart-btn {
+        font-size: 9px;
+        padding: 2px 5px;
+    }
+
+    .text-center.p-4 {
+        padding: 3px;
+    }
+}
+
 /* Change the color of the toggler icon */
 .navbar-toggler-icon {
     background-color: #e07e06; /* Dark color */
@@ -895,3 +939,174 @@ body.showCart .container{
 .navbar-toggler {
     border-color: #b47209; /* Dark border color */
 }
+@media (max-width: 576px) {
+    .product-item img {
+        height: 120px; /* Adjust image height for smaller screens */
+    }
+    .product-item .btn {
+        font-size: 14px;
+        padding: 5px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .logo-img {
+        height: 45px;
+    }
+
+    .logo p {
+        margin-left: 0;
+        font-size: 24px;
+        text-align: center;
+    }
+}
+
+
+   /* Media query for mobile view */
+    @media (max-width: 768px) {
+        .navbar {
+            height: auto;
+            padding: 5px;
+        }
+
+        .navbar-brand .logo img {
+            height: 50px;
+            margin-bottom: 5px;
+        }
+
+        .navbar-brand p {
+            margin-left: 0;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        /* .d-flex {
+            position: static;
+            justify-content: center;
+            margin-top: 10px;
+        } */
+
+        /* .btn-sm-square {
+            width: 40px;
+            height: 40px;
+            font-size: 18px;
+        } */
+    }
+
+
+    /* add to cart */
+    /* Default styles for larger screens */
+.product-item {
+    transition: transform 0.3s ease;
+}
+
+.product-item:hover {
+    transform: scale(1.05); /* Subtle scaling effect on hover */
+}
+
+.product-item img {
+    height: 150px;
+    object-fit: cover;
+}
+
+.product-item h5 {
+    font-size: 1.25rem;
+}
+
+.product-item .text-center p {
+    font-size: 0.9rem;
+}
+
+/* For screens smaller than 1200px */
+@media (max-width: 1200px) {
+    .product-item {
+        margin-bottom: 5px;
+    }
+    .product-item h5 {
+        font-size: 1.0rem;
+    }
+    .product-item .text-center p {
+        font-size: 0.75rem;
+    }
+}
+
+/* For screens smaller than 992px */
+@media (max-width: 992px) {
+    .product-item img {
+        height: 130px;
+    }
+    .product-item h5 {
+        font-size: 1.1rem;
+    }
+    .product-item .text-center p {
+        font-size: 0.8rem;
+    }
+}
+
+/* For tablets and screens smaller than 768px */
+@media (max-width: 768px) {
+    .product-item img {
+        height: 120px;
+    }
+    .product-item h5 {
+        font-size: 1rem;
+    }
+    .product-item .text-center p {
+        font-size: 0.75rem;
+    }
+    .product-item span {
+        font-size: 0.9rem;
+    }
+}
+
+/* For mobile phones and screens smaller than 576px */
+@media (max-width: 576px) {
+    .product-item img {
+        height: 100px;
+    }
+    .product-item h5 {
+        font-size: 0.95rem;
+    }
+    .product-item .text-center p {
+        font-size: 0.7rem;
+    }
+    .product-item span {
+        font-size: 0.85rem;
+    }
+    .product-item button {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+}
+/* 1st carosual */
+/* Default styles for larger screens */
+h1.display-4 {
+    font-size: 40px; /* Original font size for large screens */
+}
+
+/* For medium screens (tablets, etc.) */
+@media (max-width: 992px) {
+    h1.display-4 {
+        font-size: 25px; /* Reduce the font size on medium screens */
+    }
+}
+
+/* For smaller screens (mobile phones, etc.) */
+@media (max-width: 576px) {
+    h1.display-4 {
+        font-size: 25px; /* Further reduce the font size on smaller screens */
+    }
+}
+
+/* For very small screens (extra small mobile devices) */
+@media (max-width: 375px) {
+    h1.display-4 {
+        font-size: 20px; /* Adjust the font size even more for very small screens */
+    }
+}
+
+
+
+
+/* product cart css media q */

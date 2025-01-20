@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Foody - Organic Food Website Template</title>
+    <title> SRI BALAMURUGAN TRADERS</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -74,8 +74,8 @@
                 <!-- Logo on the left -->
                 <a href="index.html" class="navbar-brand">
                     <div class="logo">
-                        <img src="img/logo/Capture_2-removebg-preview.png" alt=""
-                            style="height: 72px; filter: drop-shadow(0 0.5px 0.5px black); position: fixed; margin-bottom: 15px;">
+                        <img src="img/logo/Capture_2-removebg-preview.png " alt=""
+                            style=" filter: drop-shadow(0 0.5px 0.5px black); position: fixed; margin-bottom: 15px;">
                         <p
                             style="margin-left: 400px; background: linear-gradient(90deg, #bb7307, #e6a84b, #8b4f02); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-top: 13px; font-size: 39px; font-family: 'Lucida Console', Monaco, monospace; font-weight: bold; letter-spacing: 3px; text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); ">
                             SRI BALAMURUGAN TRADERS
@@ -112,12 +112,13 @@
                 </a>
 
                 <!-- Fixed icons on the right -->
-                <div class="d-flex position-fixed end-0 me-4">
+                <div class="d-flex position-fixed end-0 me-4" id="adminpg">
                     <a class="btn-sm-square bg-white rounded-circle ms-3 admin-icon" href="javascript:void(0)"
                         style="z-index: 1000;">
                         <small class="fa fa-user text-body fs-4"></small>
                     </a>
-                    <a class="btn-sm-square bg-white rounded-circle ms-3 position-relative" style="z-index: 1000;">
+                    <a class="btn-sm-square bg-white rounded-circle ms-3 position-relative" style="z-index: 1000;"
+                        id="cartpng">
                         <small class="fa fa-shopping-bag text-body fs-4"></small>
                         <span id="cartCount"
                             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -132,9 +133,154 @@
 
     </div>
     <style>
+        /* Default style for larger screens */
+        .logo img {
+            height: 72px;
+            filter: drop-shadow(0 0.5px 0.5px black);
+            position: fixed;
+            margin-bottom: 15px;
+        }
 
+        .navbar-brand p {
+            margin-left: 400px;
+            background: linear-gradient(90deg, #bb7307, #e6a84b, #8b4f02);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-top: 13px;
+            font-size: 39px;
+            font-family: 'Lucida Console', Monaco, monospace;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+        }
 
+        /* For screens smaller than 1200px */
+        @media (max-width: 1200px) {
+            .navbar-brand p {
+                margin-left: 300px;
+                font-size: 34px;
+            }
+        }
 
+        /* For screens smaller than 992px */
+        @media (max-width: 992px) {
+            .navbar-brand p {
+                margin-left: 200px;
+                font-size: 30px;
+            }
+
+            .logo img {
+                height: 60px;
+            }
+        }
+
+        /* For tablets and screens smaller than 768px */
+        @media (max-width: 768px) {
+            .navbar-brand p {
+                margin-left: 100px;
+                font-size: 24px;
+            }
+
+            .logo img {
+                height: 50px;
+            }
+        }
+
+        /* For mobile phones and screens smaller than 576px */
+        @media (max-width: 576px) {
+            .navbar-brand p {
+                margin-left: 0;
+                text-align: center;
+                font-size: 20px;
+            }
+
+            .logo img {
+                height: 40px;
+            }
+        }
+
+        /* Default styles */
+        #adminpg {
+            right: 16px;
+            /* Adjust as needed */
+        }
+
+        #adminpg .btn-sm-square {
+            width: 40px;
+            height: 40px;
+        }
+
+        #cartCount {
+            font-size: 0.75rem;
+        }
+
+        /* For screens smaller than 1200px */
+        @media (max-width: 1200px) {
+            #adminpg {
+                right: 12px;
+            }
+
+            #adminpg .btn-sm-square {
+                width: 35px;
+                height: 35px;
+            }
+
+            #cartCount {
+                font-size: 0.7rem;
+            }
+        }
+
+        /* For screens smaller than 992px */
+        @media (max-width: 992px) {
+            #adminpg {
+                right: 10px;
+            }
+
+            #adminpg .btn-sm-square {
+                width: 32px;
+                height: 32px;
+            }
+
+            #cartCount {
+                font-size: 0.65rem;
+            }
+        }
+
+        /* For screens smaller than 768px */
+        @media (max-width: 768px) {
+            #adminpg {
+                right: 8px;
+            }
+
+            #adminpg .btn-sm-square {
+                width: 28px;
+                height: 28px;
+            }
+
+            #cartCount {
+                font-size: 0.6rem;
+            }
+        }
+
+        /* For mobile phones smaller than 576px */
+        @media (max-width: 576px) {
+            #adminpg {
+                right: 5px;
+                flex-direction: row;
+                /* Stack the icons vertically for smaller screens */
+                align-items: flex-end;
+            }
+
+            #adminpg .btn-sm-square {
+                width: 25px;
+                height: 25px;
+                margin-bottom: 5px;
+            }
+
+            #cartCount {
+                font-size: 0.55rem;
+            }
+        }
     </style>
     <div class="d-none d-lg-flex ms-2 icon-bar" id="navbarCollapse">
     </div>
@@ -154,6 +300,7 @@
             <button id="proceedToCheckout" class="btn btn-primary mt-3">Proceed to Checkout</button>
         </div>
     </div>
+
 
     <!-- Search Bar -->
     <div class="search-bar" id="searchBar">
@@ -199,8 +346,7 @@
                         <div class="container">
                             <div class="row justify-content-center justify-content-lg-start">
                                 <div class="col-12 col-md-10 col-lg-7">
-                                    <h1 class="display-4 mb-3 mt-5 text-white animated slideInDown"
-                                        style="font-family: 'Georgia', serif; letter-spacing: 1px; font-size: 28px;" id="san">
+                                    <h1 class="display-4 mb-3 mt-5 text-white animated slideInDown" id="san">
                                         SRI BALAMURUGAN TRADERS
                                     </h1>
                                     <p class="text-white mb-4"
@@ -208,13 +354,14 @@
                                         A trusted name in the wholesale trading industry, providing high-quality rice,
                                         pulses, and grocery products for decades.
                                     </p>
-                                    <div class="d-grid gap-2 d-sm-inline-block">
-                                        <a href="https://wa.me/+919791636464?text=Hello%20SRI%20BALAMURUGAN%20TRADERS,%20I%20would%20like%20to%20inquire%20about%20your%20products."
-                                            class="btn btn-sm rounded-pill py-2 px-4"
+                                    <div class="contact-btn">
+                                        <a href="https://wa.me/+916379063282?text=Hello%20SRI%20BALAMURUGAN%20TRADERS,%20I%20would%20like%20to%20inquire%20about%20your%20products."
+                                            class="btn btn-sm btn-contact rounded-pill py-2 px-3"
                                             style="background-color: #8B4513; color: white;" target="_blank">
                                             CONTACT
                                         </a>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -227,22 +374,22 @@
                         <div class="container">
                             <div class="row justify-content-center justify-content-lg-start">
                                 <div class="col-12 col-md-10 col-lg-7">
-                                    <h1 class="display-4 mb-3 mt-5 text-white animated slideInDown" 
-                                        style="font-family: 'Georgia', serif; letter-spacing: 1px; font-size: 28px;" id="sand">
-                                         RICE AND DHALL WHOLESELLERS
+                                    <h1 class="display-4 mb-3 mt-5 text-white animated slideInDown" id="san">
+                                        RICE AND DHALL WHOLESELLERS
                                     </h1>
                                     <p class="text-white mb-4"
                                         style="font-size: 16px; font-family: 'Times New Roman', serif;">
                                         Specialists in providing the finest rice and lentils in bulk to businesses and
                                         households, ensuring premium quality and exceptional value with every purchase.
                                     </p>
-                                    <div class="d-grid gap-2 d-sm-inline-block">
-                                        <a href="https://wa.me/+919791636464?text=Hello%20SRI%20BALAMURUGAN%20TRADERS,%20I%20would%20like%20to%20inquire%20about%20your%20products."
-                                            class="btn btn-sm rounded-pill py-2 px-4"
+                                    <div class="contact-btn">
+                                        <a href="https://wa.me/+916379063282?text=Hello%20SRI%20BALAMURUGAN%20TRADERS,%20I%20would%20like%20to%20inquire%20about%20your%20products."
+                                            class="btn btn-sm btn-contact rounded-pill py-2 px-3"
                                             style="background-color: #8B4513; color: white;" target="_blank">
                                             CONTACT
                                         </a>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -252,7 +399,7 @@
             </div>
         </div>
 
-<!-- 
+        <!-- 
         <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
                 data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -265,102 +412,8 @@
             </button> -->
     </div>
     </div>
-    <style>
-       /* Mobile First: Default for small screens */
-       .container {
-    padding: 15px;
-}
-
-.carousel-item img {
-    width: 100%;
-}
-
-/* Tablets and above (screen width ≥ 576px) */
-@media (min-width: 576px) {
-    .container {
-        padding: 20px;
-    }
-    
-    .carousel-caption {
-        padding: 15px;
-    }
-
-    #san {
-        font-size: 12px; /* Adjusting font size */
-        margin-top: 10px; /* Adding margin top */
-    }
-
-    .text-white {
-        font-size: 14px; /* Adjusting text size */
-    }
-
-    .btn {
-        font-size: 14px;
-    }
-}
-
-/* Medium screens and above (screen width ≥ 768px) */
-@media (min-width: 768px) {
-    .col-md-10 {
-        max-width: 80%;
-    }
-    
-    #san {
-        font-size: 16px; /* Adjusting font size */
-        margin-top: 15px; /* Adding margin top */
-    }
-
-    .text-white {
-        font-size: 16px; /* Adjusting text size */
-    }
-
-    .btn {
-        font-size: 16px;
-    }
-}
-
-/* Large screens and above (screen width ≥ 992px) */
-@media (min-width: 992px) {
-    .col-lg-7 {
-        max-width: 70%;
-    }
-
-    #san {
-        font-size: 10px; /* Adjusting font size */
-        margin-top: 20px; /* Adding margin top */
-    }
-
-    .text-white {
-        font-size: 18px; /* Adjusting text size */
-    }
-
-    .btn {
-        font-size: 18px;
-    }
-}
-
-/* Extra Large screens and above (screen width ≥ 1200px) */
-@media (min-width: 1200px) {
-    .col-lg-7 {
-        max-width: 60%;
-    }
-
-    #san {
-        font-size: 18px; /* Adjusting font size */
-        margin-top: 25px; /* Adding margin top */
-    }
-
-    .text-white {
-        font-size: 20px; /* Adjusting text size */
-    }
-
-    .btn {
-        font-size: 20px;
-    }
-}
 
 
-    </style>
 
     <!-- Carousel End -->
 
@@ -371,11 +424,11 @@
 
 
     <!-- About Start -->
-    <div class="container-xxl py-5" style="background-color: #FAF3E0;">
+    <div class="container-xxl py-3" style="background-color: #FAF3E0;">
         <div class="container">
-            <div class="row g-5 align-items-center">
+            <div class="row g-5 align-items-center justify-content-center"> <!-- Added justify-content-center -->
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="about-img position-relative overflow-hidden  pe-0">
+                    <div class="about-img position-relative overflow-hidden pe-0">
                         <img class="img-fluid w-100" src="img/homepage/wmremove-transformed.jpeg"
                             alt="Premium Quality Rice and Pulses">
                     </div>
@@ -397,7 +450,78 @@
             </div>
         </div>
     </div>
+    <style>
+        /* Default styles (Desktop) */
 
+        /* Optional: Set a default font size and spacing for larger screens */
+        h1.display-5 {
+            font-size: 36px;
+        }
+
+        p {
+            font-size: 16px;
+        }
+
+        /* For the image */
+        .about-img img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* For medium screens (tablets, 768px and below) */
+        @media (max-width: 992px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            h1.display-5 {
+                font-size: 28px;
+                /* Adjust font size for medium screens */
+            }
+
+            p {
+                font-size: 14px;
+                /* Reduce paragraph font size for medium screens */
+            }
+
+            .col-lg-6 {
+                /* Adjust column width for medium screens */
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+
+            /* Optional: Adjust the image for tablets */
+            .about-img img {
+                width: 100%;
+            }
+        }
+
+        /* For smaller screens (mobile phones, 576px and below) */
+        @media (max-width: 576px) {
+            h1.display-5 {
+                font-size: 22px;
+                /* Further reduce font size for mobile */
+            }
+
+            p {
+                font-size: 12px;
+                /* Reduce paragraph font size for mobile */
+            }
+
+            .col-lg-6 {
+                flex: 0 0 100%;
+                max-width: 100%;
+                /* Full width on mobile */
+            }
+
+            /* Optional: Adjust the image for mobile screens */
+            .about-img img {
+                width: 100%;
+                height: auto;
+                /* Ensure the image adjusts well for mobile */
+            }
+        }
+    </style>
 
     <!-- About End -->
 
@@ -654,12 +778,9 @@
     <!-- </div>
       </div> -->
 
-
     <div>
-        <div class="section-header text-start me-4 m-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-            <h1 class="display-5 m-3">Dealers Ship</h1>
-            <!-- <p>Explore our range of products tailored to meet your needs.</p> -->
-        </div>
+
+
         <style>
             * {
                 margin: 0;
@@ -683,7 +804,7 @@
 
             .logos {
                 overflow: hidden;
-                padding: 50px 0;
+                padding: px 0;
                 background: #fdf5eb;
                 white-space: nowrap;
                 position: relative;
@@ -701,7 +822,7 @@
 
             .logos:before {
                 left: 0;
-                /* background: linear-gradient(to left, rgba(255, 255, 255, 0), white); */
+                /* background: linear-gradient(to left, rgba(255, 255, 255, 0), white);     */
             }
 
             .logos:after {
@@ -723,29 +844,34 @@
                 margin: 0 70px;
             }
         </style>
+        <div class="section-header text-start ms-4 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <h1 class="display-5 mb-3 ">Dealership</h1>
+            <!-- <p>Explore our range of products tailored to meet your needs.</p> -->
+        </div>
 
         <body>
+
             <div class="logos">
                 <div class="logos-slide">
-                    <img src="./img/scroll-log/about.jpg" />
-                    <img src="./img/scroll-log/WhatsApp Image 2025-01-11 at 11.13.43_2be2f654.jpg" />
-                    <img src="./img/scroll-log/WhatsApp Image 2025-01-11 at 11.13.43_62dc75a9.jpg" />
-                    <img src="./img/scroll-log/WhatsApp Image 2025-01-11 at 11.13.43_6e4c30ce.jpg" />
-                    <img src="./img/scroll-log/WhatsApp Image 2025-01-11 at 11.13.43_80fd8dad.jpg" />
-                    <img src="./img/scroll-log/WhatsApp Image 2025-01-11 at 11.13.43_c21ad949.jpg" />
-                    <img src="./img/scroll-log/WhatsApp Image 2025-01-11 at 11.13.43_d2f42f4f.jpg" />
-                    <img src="./img/scroll-log/WhatsApp Image 2025-01-11 at 11.13.43_d736fa63.jpg" />
+                    <img src="./img/scroll-log/logo-1.png" />
+                    <img src="./img/scroll-log/logo-2.png" />
+                    <img src="./img/scroll-log/logo-3.avif" />
+                    <img src="./img/scroll-log/logo-4.jpg" />
+                    <img src="./img/scroll-log/logo-5.webp" />
+                    <img src="./img/scroll-log/logo-6.jpg" />
+                    <img src="./img/scroll-log/logo-7.jpg" />
+                    <img src="./img/scroll-log/logo-8.jpg" />
                 </div>
 
                 <div class="logos-slide">
-                    <img src="./img/scroll-log/about.jpg" />
-                    <img src="./img/scroll-log/WhatsApp Image 2025-01-11 at 11.13.43_2be2f654.jpg" />
-                    <img src="./img/scroll-log/WhatsApp Image 2025-01-11 at 11.13.43_62dc75a9.jpg" />
-                    <img src="./img/scroll-log/WhatsApp Image 2025-01-11 at 11.13.43_6e4c30ce.jpg" />
-                    <img src="./img/scroll-log/WhatsApp Image 2025-01-11 at 11.13.43_80fd8dad.jpg" />
-                    <img src="./img/scroll-log/WhatsApp Image 2025-01-11 at 11.13.43_c21ad949.jpg" />
-                    <img src="./img/scroll-log/WhatsApp Image 2025-01-11 at 11.13.43_d2f42f4f.jpg" />
-                    <img src="./img/scroll-log/WhatsApp Image 2025-01-11 at 11.13.43_d736fa63.jpg" />
+                    <img src="./img/scroll-log/logo-1.png" />
+                    <img src="./img/scroll-log/logo-2.png" />
+                    <img src="./img/scroll-log/logo-3.avif" />
+                    <img src="./img/scroll-log/logo-4.jpg" />
+                    <img src="./img/scroll-log/logo-5.webp" />
+                    <img src="./img/scroll-log/logo-6.jpg" />
+                    <img src="./img/scroll-log/logo-7.jpg" />
+                    <img src="./img/scroll-log/logo-8.jpg" />
                 </div>
             </div>
     </div>
@@ -821,7 +947,7 @@
  -->
     <div id="hovercard">
         <div class="container">
-            <div class="section-header text-start m-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <div class="section-header text-start me-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
                 <h1 class="display-5 mb-3">Blogs</h1>
                 <!-- <p>Explore our range of products tailored to meet your needs.</p> -->
             </div>
@@ -1100,197 +1226,289 @@
     <footer>
         <!-- Video Background -->
         <video autoplay muted loop id="background-video">
-            <source src="video/footer gif.mp4" type="video/mp4">
+            <source src="video/0_Wheat_Grain_3840x2160.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
 
         <!-- Footer Content -->
         <div class="footer-content">
             <div class="contact-details">
-                <h3 style="margin-left: -150px;">Contact</h3>
+                <div style="display: flex; align-items: center; justify-content: center;">
+                    <img src="./img/logo/Capture_2-removebg-preview-removebg-preview.png" alt="Company Logo"
+                        style="height: 60px; margin-right: 15px;filter: drop-shadow(0 0.5px 0.5px black);">
+                    <h1 style="color: rgb(255, 255, 255); margin: 0;">SRI BALAMURUGAN TREADERS</h1>
+                </div>
+
+                <h3>Contact</h3>
                 <p><strong>Email:</strong> sbmt15424@gmail.com</p>
-                <p> <strong>Phone:</strong> +91 9791636464</p>
-                <p> 54, Gandhi Road, West Tambaram, Chennai - 600045</p>
-                <p> <strong>GSTIN:</strong> 33BEIPG2538C1Z0</p>
+                <p><strong>Phone:</strong> +91 9791636464</p>
+                <p><strong>Address:</strong> 54, Gandhi Road, West Tambaram, Chennai - 600045</p>
+                <p><strong>GSTIN:</strong> 33BEIPG2538C1Z0</p>
             </div>
 
             <div class="memberships">
-                <h3>Dealers Ship</h3>
-                <div class="logo-container" style="margin-top: 30px;">
-                    <img src="./brand logo/images.jpeg" alt="APEDA">
-                    <img src="./brand logo/images.png" alt="FSSAI">
-                    <img src="./brand logo/india gate.jpg" alt="One Star Export">
-                    <img src="./brand logo/logo-new-design-1.png" alt="ISO 22000:2018">
-                    <img src="./brand logo/RAMAJEYAM_-LOGO_PNG-01.png" alt="HACCP">
-                    <!-- <img src="/brand logo/images.jpeg" alt="ISO 9001"> -->
+                <h3>Dealer Ship</h3>
+                <div class="logo-container"
+                    style="margin-top: 20px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                    <img src="./brand logo/images.jpeg" alt="APEDA" style="height: 50px;">
+                    <img src="./brand logo/images.png" alt="FSSAI" style="height: 50px;">
+                    <img src="./brand logo/india gate.jpg" alt="One Star Export" style="height: 50px;">
+                    <img src="./brand logo/logo-new-design-1.png" alt="ISO 22000:2018" style="height: 50px;">
+                    <img src="./brand logo/RAMAJEYAM_-LOGO_PNG-01.png" alt="HACCP" style="height: 50px;">
                 </div>
             </div>
 
-            <div class="location">
+            <!-- <div class="location">
                 <h3>Location</h3>
-                <!-- <iframe 
-                src="https://maps.app.goo.gl/GMiU3MYs2CFSA1Gb6"
-                style="border:0;" 
-                allowfullscreen="" 
-                loading="lazy">
-            </iframe> -->
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.692002873472!2d80.109117!3d12.9275065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525f65571dc445%3A0xdca59749b0a34c88!2s54%2C%20Gandhi%20Rd%2C%20Chandra%20Puram%2C%20West%20Tambaram%2C%20Tambaram%2C%20Chennai%2C%20Tamil%20Nadu%20600045!5e0!3m2!1sen!2sin!4v1734334461606!5m2!1sen!2sin"
-                    style="border:0;" allowfullscreen="" loading="lazy"
+                    style="border:0; width: 100%; height: 200px;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+            </div> -->
         </div>
 
-        <div class="footer" style="color: #fff; text-align: center; font-size: 15px;">
-            <p style="color: #f7f5f5; display: inline-block; border-top: 2px solid #fff; padding-top: 10px;">
+        <div class="footer" style="color: #fff; text-align: center; font-size: 14px; padding: 20px 0;">
+            <p style="color: #f7f5f5; display: inline-block; border-top: 2px solid #fff; padding-top: 10px; margin: 0;">
                 &copy; 2025 SRI BALAMURUGAN TREADERS. All Rights Reserved |
                 <a href="https://www.corpwings.in" style="color: #ffffff; font-weight: bold;">Developed, Marketed, and
                     Designed by Corp Wings</a>
             </p>
         </div>
+
     </footer>
-
-
-
-
-
-</body>
-
-</html>
-
-<style>
-    /* Reset Defaults */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    /* Footer Styles */
-    footer {
-        position: relative;
-        color: #fff;
-        font-family: Arial, sans-serif;
-        text-align: start;
-        padding: 20px;
-        overflow: hidden;
-        background: linear-gradient(rgb(6 6 6 / 67%), rgba(152, 72, 15, 0.48));
-    }
-
-    /* Video Background */
-    #background-video {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: -1;
-    }
-
-    /* Footer Content */
-    .footer-content {
-        display: flex;
-        justify-content: end;
-        align-items: start;
-        flex-wrap: wrap;
-        position: relative;
-        z-index: 2;
-        padding: 20px;
-    }
-
-    .footer-content h3 {
-        margin-bottom: 10px;
-        font-size: 1.2em;
-        color: #f2f2f2;
-        text-align: center;
-    }
-
-    .contact-details,
-    .memberships,
-    .location {
-        margin: 10px;
-        flex: 1;
-        min-width: 250px;
-    }
-
-    /* Membership Logos */
-    .logo-container {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        flex-wrap: wrap;
-    }
-
-    .logo-container img {
-        width: 60px;
-        height: auto;
-        object-fit: contain;
-        margin: 5px;
-    }
-
-    /* Map */
-    .location iframe {
-        border: none;
-        border-radius: 5px;
-        margin-left: 5rem;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-        .footer-content {
-            flex-direction: column;
+    <style>
+        footer {
+            position: relative;
+            background-color: transparent;
+            /* Allow video to be visible */
+            padding: 20px;
+            color: #fff;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            background: linear-gradient(rgb(6 6 6 / 67%), rgb(44 40 40 / 48%));
         }
-    }
-</style>
+
+        #background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+
+        }
+
+        /* for balamurugan h1 tag */
+        /* .top-section {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+    z-index: 1000;
+} */
+
+        footer .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff6b00;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        footer .logo img {
+            max-width: 50px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        footer p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin: 10px 0 20px;
+        }
+
+        footer .contact-info {
+            margin-bottom: 15px;
+        }
+
+        footer .contact-info div {
+            margin: 5px 0;
+        }
+
+        footer .contact-info .icon {
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        footer .contact-info a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer .social-icons {
+            margin-top: 15px;
+        }
+
+        footer .social-icons a {
+            margin: 0 5px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 22px;
+            transition: color 0.3s;
+        }
+
+        footer .social-icons a:hover {
+            color: #ff6b00;
+        }
+
+
+        /* mobile view */
+        /* Large devices (desktops, 1200px and up) */
+        @media (min-width: 1200px) {
+            footer {
+                padding: 30px;
+                font-size: 18px;
+            }
+
+            footer .logo {
+                font-size: 32px;
+            }
+
+            footer .social-icons a {
+                font-size: 26px;
+            }
+        }
+
+        /* Medium devices (tablets, 768px to 1199px) */
+        @media (max-width: 1199px) and (min-width: 768px) {
+            footer {
+                padding: 25px;
+            }
+
+            footer p {
+                font-size: 15px;
+            }
+
+            footer .logo {
+                font-size: 28px;
+            }
+
+            footer .social-icons a {
+                font-size: 24px;
+            }
+        }
+
+        /* Small devices (phones, 480px to 767px) */
+        @media (max-width: 767px) and (min-width: 480px) {
+            footer {
+                padding: 20px;
+            }
+
+            footer p {
+                font-size: 14px;
+            }
+
+            footer .logo {
+                font-size: 24px;
+            }
+
+            footer .contact-info div {
+                margin: 4px 0;
+            }
+
+            footer .social-icons a {
+                font-size: 22px;
+            }
+        }
+
+        /* Extra small devices (phones, less than 480px) */
+        @media (max-width: 479px) {
+            footer {
+                padding: 10px;
+            }
+
+            h1,
+            .h1 {
+                font-size: calc(1.375rem + 0vw);
+                margin-top: 20px;
+            }
+
+            footer p {
+                font-size: 14px;
+            }
+
+            footer .logo {
+                font-size: 20px;
+            }
+
+            footer .logo img {
+                max-width: 40px;
+            }
+
+            footer .contact-info div {
+                font-size: 12px;
+            }
+
+            footer .social-icons a {
+                font-size: 20px;
+            }
+
+        }
+    </style>
+
+
+    <!-- Back to Top -->
+    <a href="https://wa.me/6379063282?text=Hi i would like to order"
+        class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top" target="_blank"
+        style="background-color: #25D366; border: none;">
+        <i class="bi bi-whatsapp" style="font-size: 1.5em; color: #fff;"></i>
+    </a>
 
 
 
-<!-- Back to Top -->
-<a href="https://wa.me/6379063282?text=Hi i would like to order"
-    class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top" target="_blank"
-    style="background-color: #25D366; border: none;">
-    <i class="bi bi-whatsapp" style="font-size: 1.5em; color: #fff;"></i>
-</a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
 
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    <script src="js/app.js"></script>
+
+    <!-- Place this just before the closing -->
 
 
-<!-- JavaScript Libraries -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="lib/wow/wow.min.js"></script>
-<script src="lib/easing/easing.min.js"></script>
-<script src="lib/waypoints/waypoints.min.js"></script>
-<script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-
-<!-- Template Javascript -->
-<script src="js/main.js"></script>
-<script src="js/app.js"></script>
-
-<!-- Place this just before the closing </body> tag -->
-
-<!-- Modal -->
-<div class="modal fade" id="productAddedModal" tabindex="-1" aria-labelledby="productAddedModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-sm modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="productAddedModalLabel">Product Already in Cart</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                This product is already in your cart!
-            </div>
-            <div class="modal-footer" style="color:#bc7348;">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <!-- modal -->
+    <div class="modal fade" id="productAddedModal" tabindex="-1" aria-labelledby="productAddedModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productAddedModalLabel">Product Already in Cart</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    This product is already in your cart!
+                </div>
+                <div class="modal-footer" style="color:#bc7348;">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- popup -->
+    <!-- popup -->
 
 
 </body>

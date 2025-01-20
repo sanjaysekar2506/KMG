@@ -10,7 +10,9 @@ dotenv.config();
 
 const app = express();
 app.use(cors()); // Enable CORS
-app.use(express.json());
+
+
+
 
 // Cloudinary configuration
 cloudinary.config({

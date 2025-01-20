@@ -325,12 +325,12 @@ style.innerHTML = `
         position: fixed;
         bottom: 50px;
         right: 90px;
-        background-color:rgb(223, 14, 14);
+        background-color:  #8B4513;
         color: white;
         padding: 10px 20px;
         border-radius: 5px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        font-size: 18px;
+        font-size: 14px;
         z-index: 1000;
         animation: fadeInOut 3s ease forwards;
     }
@@ -342,24 +342,24 @@ style.innerHTML = `
         100% { opacity: 0; transform: translateY(10px); }
     }
 
-/* Media query for mobile view */
-@media (max-width: 768px) {
-    .cart-popup {
-        top: 20px; /* Position it at the top */
-        left: 50%; /* Center horizontally */
-        transform: translateX(-50%); /* Adjust for horizontal centering */
-        bottom: auto; /* Remove the bottom position */
-        right: auto; /* Remove the right position */
-    }
-}
+// /* Media query for mobile view */
+// @media (max-width: 768px) {
+//     .cart-popup {
+//         top: 20px; /* Position it at the top */
+//         left: 50%; /* Center horizontally */
+//         transform: translateX(-50%); /* Adjust for horizontal centering */
+//         bottom: auto; /* Remove the bottom position */
+//         right: auto; /* Remove the right position */
+//     }
+// }
 
-@keyframes fadeInOut {
-    0% { opacity: 0; transform: translateY(10px); }
-    10% { opacity: 1; transform: translateY(0); }
-    90% { opacity: 1; transform: translateY(0); }
-    100% { opacity: 0; transform: translateY(10px); }
-}
-`;
+// @keyframes fadeInOut {
+//     0% { opacity: 0; transform: translateY(10px); }
+//     10% { opacity: 1; transform: translateY(0); }
+//     90% { opacity: 1; transform: translateY(0); }
+//     100% { opacity: 0; transform: translateY(10px); }
+// }
+// `;
 document.head.appendChild(style);
 
 
@@ -477,21 +477,36 @@ document.head.appendChild(style);
 })(jQuery);
 
 // JavaScript for sliding cart functionality
+// JavaScript for sliding cart functionality
 document.addEventListener("DOMContentLoaded", () => {
-    // Select elements
     const cartIcon = document.querySelector(".fa-shopping-bag");
     const cartSidebar = document.querySelector("#cartSidebar");
     const closeButton = document.querySelector("#closeCart");
 
-    // Open Cart Sidebar
-    cartIcon.addEventListener("click", () => {
+    // Function to open the cart sidebar
+    function openCartSidebar() {
         cartSidebar.style.transform = "translateX(0)";
         updateCartSidebar(); // Update sidebar details when opening
-    });
- 
-    // Close Cart Sidebar
-    closeButton.addEventListener("click", () => {
+    }
+
+    // Function to close the cart sidebar
+    function closeCartSidebar() {
         cartSidebar.style.transform = "translateX(100%)";
+    }
+
+    cartIcon.addEventListener("click", openCartSidebar);
+    closeButton.addEventListener("click", closeCartSidebar);
+
+    // Prevent clicks inside the sidebar from closing it
+    cartSidebar.addEventListener("click", (event) => {
+        event.stopPropagation();
+    });
+
+    // Close sidebar when clicking outside
+    document.addEventListener("click", (event) => {
+        if (!cartSidebar.contains(event.target) && !cartIcon.contains(event.target)) {
+            closeCartSidebar();
+        }
     });
 
     updateCartCount();
@@ -506,9 +521,7 @@ function updateCartSidebar() {
     const cartItemsContainer = document.querySelector('.cart-items');
     const cartTotalElement = document.getElementById('cartTotal');
 
-    // Clear current cart items
-    cartItemsContainer.innerHTML = '';
-
+    cartItemsContainer.innerHTML = ''; // Clear current cart items
     let total = 0;
 
     cart.forEach((item, index) => {
@@ -532,10 +545,7 @@ function updateCartSidebar() {
         cartItemsContainer.innerHTML += cartItem;
     });
 
-    // Update total
     cartTotalElement.textContent = `₹${total.toFixed(2)}`;
-
-    // Save the updated cart to localStorage
     localStorage.setItem('cart', JSON.stringify(cart));
 }
 
@@ -555,7 +565,7 @@ function changeQuantity(index, delta) {
             cart.splice(index, 1); // Remove item if quantity is 0
         }
 
-        cartCount = cart.reduce((acc, item) => acc + item.quantity, 0); // Update total count
+        cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
         updateCartCount();
         updateCartSidebar();
     }
@@ -600,9 +610,9 @@ document.addEventListener('click', function(event) {
     }
 });
 
-
 // Initialize the cart count display
 updateCartCount();
+
 //for what's app 
 
 
@@ -722,3 +732,4 @@ document.getElementById('proceedToCheckout').addEventListener('click', () => {
 <button id="proceedToCheckout" class="btn btn-primary">Proceed to Checkout</button>
 */
 
+// adminmodal close outside click
