@@ -457,7 +457,11 @@
 #adminModal {
     display: none; /* Hidden by default */
     position: fixed;
+<<<<<<< HEAD
     z-index: 10000; /* Sit on top */
+=======
+    z-index: 100000; /* Sit on top */
+>>>>>>> 87f815c71d636912b3097caed06ace02f0b77e55
     left: 0;
     top: 0;
     width: 100%;
