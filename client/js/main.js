@@ -117,7 +117,7 @@
         }
     });
 
-    const apiUrl = 'https://sbt-api.vercel.app'; // Make sure this is the correct API URL
+    const apiUrl = 'http://localhost:5000'; // Make sure this is the correct API URL
 
     // Function to render the products dynamically based on the category selected
     function renderProducts(products) {
@@ -134,7 +134,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="product-item position-relative bg-light overflow-hidden h-100 shadow-sm">
                         <!-- Product Image -->
-                        <img class="img-fluid w-100" src="${product.imageUrl}" alt="${product.name}" style="height: 150px; object-fit: cover;">
+                        <img class="img-fluid w-100" src="${product.imageUrl}" alt="${product.name}" style="object-fit: cover;">
                         
                         <!-- Product Details -->
                         <div class="text-center p-4">
@@ -234,14 +234,14 @@ function renderProducts(products) {
         const productCard = `
             <div class="col-lg-3 col-md-6">
                 <div class="product-item position-relative bg-light overflow-hidden h-100 shadow-sm">
-                    <img class="img-fluid w-100" src="${product.imageUrl}" alt="${product.name}" style="height: 200px; object-fit: cover;">
-                    <div class="text-center p-4">
+                    <img class="img-fluid w-10 d-block mx-auto" src="${product.imageUrl}" alt="${product.name}">
+                    <div class="text-center py-2">
                         <h5 class="fw-bold mb-1">${product.name}</h5>
                         <p class="text-muted mb-1">${product.description ? product.description : 'No description available'}</p>
                         <span class="text-align fw-bold" style="color:#a45430;">Rs.${product.price}</span>
                          <div class="d-flex border-top">
                         <small class="w-100 text-center py-2" >
-                            <button class="text-white w-100 btn btn- add-to-cart-btn" data-product-id="${product.id}"  style="background-color:#a45430; margin-bottom:-20px">
+                            <button class="text-white w-100 btn btn- add-to-cart-btn" data-product-id="${product.id}"  style="background-color:#a45430;">
                                 <i class="fa fa-shopping-bag text-white me-2" ></i>Add to cart
                             </button>
                         </small>

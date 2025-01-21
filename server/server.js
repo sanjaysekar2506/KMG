@@ -278,9 +278,9 @@ app.delete('/deleteProduct/:id', async (req, res) => {
         res.status(500).json({ message: 'Failed to remove product' });
     }
 });
-app.get('/',(req,res) => {
+app.get('/', (req, res) => {
     res.send("Hi")
-  });
+});
 // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

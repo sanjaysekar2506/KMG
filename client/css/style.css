@@ -204,7 +204,7 @@
 .carousel-caption {
     top: 0;
     left: 0;
-    right: 0;
+    right: 10;
     bottom: 0;
     display: flex;
     align-items: center;
@@ -236,7 +236,7 @@
     #header-carousel .carousel-item img {
         position: absolute;
         width: 100%;
-        height: 82%;
+        height: 95%;
         object-fit: cover;
     }
 }
@@ -813,7 +813,7 @@ body.showCart .container{
     border-radius: 20px; /* Add rounded corners */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Initial shadow */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 400px; /* Adjust height */
+    height: 600px; /* Adjust height */
     overflow: hidden; /* Ensures the content stays within the rounded corners */
 }
 
