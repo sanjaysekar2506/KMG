@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const multer = require('multer');
 const cloudinary = require('cloudinary').v2;
 const dotenv = require('dotenv');
+const Razorpay = require('razorpay');
 const path = require('path');
 
 dotenv.config();
@@ -17,6 +18,12 @@ cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
     api_key: process.env.CLOUD_API_KEY,
     api_secret: process.env.CLOUD_API_SECRET,
+});
+
+// Razorpay configuration
+const razorpay = new Razorpay({
+    key_id: process.env.RAZORPAY_KEY_ID, // Add these to your .env file
+    key_secret: process.env.RAZORPAY_KEY_SECRET
 });
 
 // MongoDB connection
@@ -111,9 +118,6 @@ app.put('/updateCategory/:id', upload.single('image'), async (req, res) => {
     try {
         const categoryId = req.params.id;
         const categoryName = req.body.name;
-
-        let updateData = { name: categoryName };
-
         if (req.file) {
             const file = req.file;
 
@@ -278,6 +282,42 @@ app.delete('/deleteProduct/:id', async (req, res) => {
         res.status(500).json({ message: 'Failed to remove product' });
     }
 });
+
+
+// Razorpay Create Order Route
+app.post('/api/payment/order', async (req, res) => { 
+    const { amount } = req.body;
+    try {
+        const options = {
+            amount: amount * 100, // Razorpay expects amount in smallest currency unit (paise)
+            currency: "INR",
+            receipt: `order_rcptid_${Math.floor(Math.random() * 10000)}`,
+        };
+        const order = await razorpay.orders.create(options);
+        res.json(order);
+    } catch (error) {
+        console.error('Error creating Razorpay order:', error);
+        res.status(500).send("Error creating order");
+    }
+});
+
+// Razorpay Verify Payment Route
+app.post('/api/payment/verify', (req, res) => {
+    const { payment_id, order_id, signature } = req.body;
+
+    const body = order_id + "|" + payment_id;
+    const expectedSignature = crypto
+        .createHmac('sha256', process.env.RAZORPAY_KEY_SECRET)
+        .update(body.toString())
+        .digest('hex');
+
+    if (expectedSignature === signature) {
+        res.json({ success: true, message: "Payment verified successfully" });
+    } else {
+        res.status(400).json({ success: false, message: "Invalid signature" });
+    }
+});
+
 app.get('/', (req, res) => {
     res.send("Hi")
 });

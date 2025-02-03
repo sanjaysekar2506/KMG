@@ -238,10 +238,10 @@ function renderProducts(products) {
                     <div class="text-center py-2">
                         <h5 class="fw-bold mb-1">${product.name}</h5>
                         <p class="text-muted mb-1">${product.description ? product.description : 'No description available'}</p>
-                        <span class="text-align fw-bold" style="color:#a45430;">Rs.${product.price}</span>
+                        <span class="text-align fw-bold" style="color:#2d6a4f;">Rs.${product.price}</span>
                          <div class="d-flex border-top">
                         <small class="w-100 text-center py-2" >
-                            <button class="text-white w-100 btn btn- add-to-cart-btn" data-product-id="${product.id}"  style="background-color:#a45430;">
+                            <button class="text-white w-100 btn btn- add-to-cart-btn" data-product-id="${product.id}"  style="background-color:#2d6a4f;">
                                 <i class="fa fa-shopping-bag text-white me-2" ></i>Add to cart
                             </button>
                         </small>
@@ -412,7 +412,7 @@ document.head.appendChild(style);
         // Add a default "All Products" button to show all products
         const allProductsButton = `
             <li class="nav-item me-2">
-                <a class="btn btn-outline border-2 active" href="javascript:void(0);" onclick="filterByCategory('')" style="background-color:#bc7348; color: white;"  >All Products</a>
+                <a class="btn btn-outline border-2 active" href="javascript:void(0);" onclick="filterByCategory('')" style="background-color:#2d6a4f; color: white;"  >All Products</a>
             </li>
         `;
         categoryButtonsContainer.innerHTML += allProductsButton;
@@ -421,7 +421,7 @@ document.head.appendChild(style);
         categories.forEach(category => {
             const button = `
                 <li class="nav-item me-2">
-                    <a class="btn btn-outline- border-2" href="javascript:void(0);" onclick="filterByCategory('${category._id}')"  style="background-color:#bc7348; color: white;">${category.name}</a>
+                    <a class="btn btn-outline- border-2" href="javascript:void(0);" onclick="filterByCategory('${category._id}')"  style="background-color:#2d6a4f; color: white;">${category.name}</a>
                 </li>
             `;
             categoryButtonsContainer.innerHTML += button;
@@ -617,29 +617,47 @@ updateCartCount();
 
 
 document.getElementById('proceedToCheckout').addEventListener('click', () => {
-    const phoneNumber = "916380944811"; // Include country code (e.g., 91 for India)
-    let message = "Hello, I would like to order the following items:\n\n";
-
     // Ensure the cart array exists and has valid data
     if (!cart || cart.length === 0) {
         alert("Your cart is empty. Please add items to proceed.");
         return;
     }
 
-    cart.forEach(item => {
-        message += `🔹 *${item.name}*\n    Quantity: ${item.quantity}\n    Price: ₹${item.price}\n    Total: ₹${(item.price * item.quantity).toFixed(2)}\n\n`;
-    });
-
+    // Calculate the total amount
     const totalAmount = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-    message += `*Grand Total: ₹${totalAmount.toFixed(2)}*\n\n`;
-    message += "Please confirm the order. Thank you!";
 
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappURL = `whatsapp://send?phone=${phoneNumber}&text=${encodedMessage}`;
+    // Razorpay options
+    const options = {
+        key: "rzp_live_eHl1IKa1mogqyP", // Replace with your Razorpay Key ID
+        amount: (totalAmount * 100), // Amount in paise (multiply by 100 for INR)
+        currency: "INR",
+        name: "Isha Nursary",
+        description: "Thank you for shopping with us!",
+        image: "YOUR_LOGO_URL", // Optional: Add your company logo URL
+        handler: function (response) {
+            // Handle successful payment
+            alert(`Payment successful! Payment ID: ${response.razorpay_payment_id}`);
+            // Optionally, send payment confirmation to your server
+        },
+        prefill: {
+            name: "Customer Name", // Optional: Prefill customer's name
+            email: "customer@example.com", // Optional: Prefill customer's email
+            contact: "916379063282" // Optional: Prefill customer's contact number
+        },
+        theme: {
+            color: "#3399cc" // Customize the payment popup theme color
+        }
+    };
 
-    // Redirect to WhatsApp with the pre-filled message
-    window.location.href = whatsappURL;
+    // Open Razorpay payment popup
+    const rzp = new Razorpay(options);
+    rzp.on('payment.failed', function (response) {
+        // Handle failed payment
+        alert(`Payment failed: ${response.error.description}`);
+    });
+    rzp.open();
 });
+
 
 
 

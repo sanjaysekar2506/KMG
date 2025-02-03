@@ -1,0 +1,225 @@
+const express = require('express');
+const cors = require('cors');
+const mongoose = require('mongoose');
+const multer = require('multer');
+const cloudinary = require('cloudinary').v2;
+const dotenv = require('dotenv');
+const bodyParser = require('body-parser');
+const Razorpay = require('razorpay');
+const crypto = require('crypto');
+
+dotenv.config();
+
+const app = express();
+app.use(cors());
+app.use(bodyParser.json());
+app.use(express.json());
+
+// Cloudinary configuration
+cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.CLOUD_API_KEY,
+    api_secret: process.env.CLOUD_API_SECRET,
+});
+
+// Razorpay configuration
+const razorpay = new Razorpay({
+    key_id: process.env.RAZORPAY_KEY_ID, // Add these to your .env file
+    key_secret: process.env.RAZORPAY_KEY_SECRET
+});
+
+// MongoDB connection
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('MongoDB connected'))
+    .catch(err => console.log('MongoDB connection error:', err));
+
+// Define Category Schema and Model for MongoDB
+const categorySchema = new mongoose.Schema({
+    name: String,
+    imageUrl: String
+});
+const Category = mongoose.model('Category', categorySchema);
+
+// Define Product Schema and Model for MongoDB
+const productSchema = new mongoose.Schema({
+    name: String,
+    price: Number,
+    category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category' },
+    imageUrl: String
+});
+const Product = mongoose.model('Product', productSchema);
+
+// Multer setup for file upload
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
+
+// Razorpay Create Order Route
+app.post('/api/payment/order', async (req, res) => {
+    const { amount } = req.body;
+    try {
+        const options = {
+            amount: amount * 100, // Razorpay expects amount in smallest currency unit (paise)
+            currency: "INR",
+            receipt: `order_rcptid_${Math.floor(Math.random() * 10000)}`,
+        };
+        const order = await razorpay.orders.create(options);
+        res.json(order);
+    } catch (error) {
+        console.error('Error creating Razorpay order:', error);
+        res.status(500).send("Error creating order");
+    }
+});
+
+// Razorpay Verify Payment Route
+app.post('/api/payment/verify', (req, res) => {
+    const { payment_id, order_id, signature } = req.body;
+
+    const body = order_id + "|" + payment_id;
+    const expectedSignature = crypto
+        .createHmac('sha256', process.env.RAZORPAY_KEY_SECRET)
+        .update(body.toString())
+        .digest('hex');
+
+    if (expectedSignature === signature) {
+        res.json({ success: true, message: "Payment verified successfully" });
+    } else {
+        res.status(400).json({ success: false, message: "Invalid signature" });
+    }
+});
+
+// Route to Add a New Category
+app.post('/addCategories', upload.single('image'), async (req, res) => {
+    try {
+        const categoryName = req.body.name;
+        const file = req.file;
+
+        if (!file) return res.status(400).json({ message: 'No file uploaded' });
+
+        // Upload image to Cloudinary
+        cloudinary.uploader.upload_stream({ resource_type: 'auto' }, async (error, result) => {
+            if (error) {
+                console.error('Image upload error:', error);
+                return res.status(500).json({ message: 'Image upload failed' });
+            }
+
+            const imageUrl = result.secure_url;
+
+            // Save category in MongoDB
+            const newCategory = new Category({
+                name: categoryName,
+                imageUrl: imageUrl
+            });
+
+            await newCategory.save();
+            return res.status(201).json({ message: 'Category added successfully', category: newCategory });
+        }).end(file.buffer);
+    } catch (error) {
+        console.error('Add Category Error:', error);
+        res.status(500).json({ message: 'Server Error' });
+    }
+});
+
+// Route to fetch all categories
+app.get('/addcategories', async (req, res) => {
+    try {
+        const categories = await Category.find();
+        res.status(200).json(categories);
+    } catch (error) {
+        console.error('Fetch Categories Error:', error);
+        res.status(500).json({ message: 'Failed to fetch categories' });
+    }
+});
+
+// Route to fetch a single category by ID
+app.get('/addcategories/:id', async (req, res) => {
+    try {
+        const categoryId = req.params.id;
+        const category = await Category.findById(categoryId);
+
+        if (!category) {
+            return res.status(404).json({ message: 'Category not found' });
+        }
+
+        res.status(200).json(category);
+    } catch (error) {
+        console.error('Fetch Category by ID Error:', error);
+        res.status(500).json({ message: 'Failed to fetch category details' });
+    }
+});
+
+// Route to Update a Category
+app.put('/updateCategory/:id', upload.single('image'), async (req, res) => {
+    try {
+        const categoryId = req.params.id;
+        const categoryName = req.body.name;
+
+        let updateData = { name: categoryName };
+
+        if (req.file) {
+            const file = req.file;
+
+            cloudinary.uploader.upload_stream({ resource_type: 'auto' }, async (error, result) => {
+                if (error) {
+                    console.error('Image upload error:', error);
+                    return res.status(500).json({ message: 'Image upload failed' });
+                }
+
+                const imageUrl = result.secure_url;
+                updateData.imageUrl = imageUrl;
+
+                // Update category in MongoDB
+                await Category.findByIdAndUpdate(categoryId, updateData);
+                res.status(200).json({ message: 'Category updated successfully', updatedCategory: updateData });
+            }).end(file.buffer);
+        } else {
+            await Category.findByIdAndUpdate(categoryId, updateData);
+            res.status(200).json({ message: 'Category updated successfully', updatedCategory: updateData });
+        }
+    } catch (error) {
+        console.error('Update Category Error:', error);
+        res.status(500).json({ message: 'Failed to update category' });
+    }
+});
+
+// Route to delete a category
+app.delete('/deleteCategory/:id', async (req, res) => {
+    try {
+        const categoryId = req.params.id;
+        const category = await Category.findByIdAndDelete(categoryId);
+
+        if (!category) {
+            return res.status(404).json({ message: 'Category not found' });
+        }
+
+        res.status(200).json({ message: 'Category removed successfully' });
+    } catch (error) {
+        console.error('Delete Category Error:', error);
+        res.status(500).json({ message: 'Failed to remove category' });
+    }
+});
+
+// Route to fetch all products or filter by category
+app.get('/products', async (req, res) => {
+    try {
+        const { category } = req.query;
+        let filter = {};
+        if (category) filter.category = category;
+
+        const products = await Product.find(filter).populate('category');
+        res.json(products);
+    } catch (error) {
+        console.error('Error fetching products:', error);
+        res.status(500).json({ message: error.message });
+    }
+});
+
+// Basic route
+app.get('/', (req, res) => {
+    res.send("Server is running...");
+});
+
+// Start server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
