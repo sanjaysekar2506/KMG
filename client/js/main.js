@@ -117,7 +117,7 @@
         }
     });
 
-    const apiUrl = 'http://localhost:5000'; // Make sure this is the correct API URL
+    const apiUrl = 'https://kmg-lac.vercel.app'; // Make sure this is the correct API URL
 
     // Function to render the products dynamically based on the category selected
     function renderProducts(products) {
